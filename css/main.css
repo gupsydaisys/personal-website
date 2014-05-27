@@ -161,18 +161,17 @@ COLOR
 /* site body */
 body {
 	background-color: #fff;
-	color: #999;
+	color: #292727;
 }
 
 /* nav background mobile devices */
 nav {
-	background: #599a68;
+	background: #343433;
 }
 
-/* green header */
+/* Header */
 header {
-	background: #6ab47b;
-	border: #599a68;
+	background: #343433;
 }
 
 /* logo text */
@@ -187,10 +186,10 @@ a {
 
 /* FIX THE NAV LINK TO BE THE RIGHT COLOR */
 nav a, nav a:visited {
-	color: #fff;
+	color: #adb1b1;
 }
 
 /* selected nav link */
 nav a.selected, nav a:hover {
-	color: #32673f;
+	color: #fff;
 }
