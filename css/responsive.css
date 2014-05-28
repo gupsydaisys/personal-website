@@ -40,12 +40,12 @@ VERY VERY Large Screens
 	HEADER
 	**********************************/
 	nav {
-		background: none;
 		float: right;
-		font-size: 1.125em;
+		font-size: 1.2em;
 		margin-right: 5%;
 		text-align: right;
 		width: 45%;
+		color: #000;
 	}
 
 	#logo {
@@ -56,7 +56,7 @@ VERY VERY Large Screens
 	}
 
 	h1 {
-		font-size: 0.825em;
+		font-size: 3.6em;
 		margin-bottom: 20px;
 	}
 
@@ -66,7 +66,8 @@ VERY VERY Large Screens
 	}
 
 	header {
-		border-bottom: 5px solid #343433;
+		/*border-bottom: 5px solid #343433;*/
+		border-bottom: 5px solid #fff;
 		margin-bottom: 60px;
 	}
 

@@ -2,7 +2,7 @@
 GENERAL
 **********************************/
 body {
-	font-family: 'EB Garamond', serif;
+	font-family: serif;
 }
 
 #wrapper {
@@ -39,9 +39,9 @@ header {
 }
 
 h1 {
-	font-family: 'Changa One', sans-serif;
+	font-family: 'Dorsa', sans-serif;
 	margin: 15px 0;
-	font-size 1.75em;
+	font-size: 2.8em;
 	font-weight: normal;
 	line-height: 0.8em;
 }
@@ -58,6 +58,7 @@ h2 {
 NAVAGATION
 **********************************/
 nav {
+	font-family: 'Lato', sans-serif;
 	text-align: center;
 	padding: 10px 0;
 	margin: 20px 0 0;
@@ -83,9 +84,11 @@ nav a {
 FOOTER
 **********************************/
 footer {
+	float: left;
 	font-size: 0.75em;
-	text-align: center;
-	clear: both;
+	/*text-align: center;*/
+	/*clear: both;*/
+	margin-left: 20px;
 	padding-top: 50px;
 	color: #ccc;
 }
@@ -166,17 +169,25 @@ body {
 
 /* nav background mobile devices */
 nav {
-	background: #343433;
+	/*background: #343433;*/
+	background: #fff;
 }
 
 /* Header */
 header {
-	background: #343433;
+	/*background: #343433;*/
+	background: #fff;
 }
 
-/* logo text */
+/* regular logo text */
 h1, h2 {
-	color: #fff;
+	/*color: #fff;*/
+	color: #343433;
+}
+
+/* hover logo text */
+h1:hover {
+	color: #999998;
 }
 
 /* links */
@@ -184,12 +195,14 @@ a {
 	color: #32673f;
 }
 
-/* FIX THE NAV LINK TO BE THE RIGHT COLOR */
+/* regular nav link */
 nav a, nav a:visited {
-	color: #adb1b1;
+	/*color: #adb1b1;*/
+	color: #000;
 }
 
 /* selected nav link */
 nav a.selected, nav a:hover {
-	color: #fff;
+	/*color: #fff;*/
+	text-decoration: underline;
 }
