@@ -78,7 +78,8 @@ nav li {
 }
 
 nav a {
-	font-weight: 800;
+	font-weight: 1500;
+	font-size: 120%;
 	padding: 15px 10px;
 }
 
@@ -89,7 +90,7 @@ footer {
 	float: left;
 	font-size: 0.8em;
 	/*text-align: center;*/
-	/*clear: both;*/
+	clear: both;
 	margin-left: 20px;
 	padding-top: 50px;
 	color: #ccc;
@@ -99,6 +100,10 @@ footer {
 	width: 20px;
 	height: 20px;
 	margin: 0 5px;
+}
+
+footer p {
+	font-family: 'Lato', sans-serif;
 }
 
 /* ADD IN FOOTER IMAGE HERE*/
@@ -207,4 +212,9 @@ nav a, nav a:visited {
 nav a.selected, nav a:hover {
 	/*color: #fff;*/
 	text-decoration: underline;
+}
+
+#logo:hover {
+    opacity: 0.8;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
 }
