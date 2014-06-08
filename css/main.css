@@ -35,12 +35,17 @@ header {
 
 #logo {
 /*	text-align: center;
-*//*	margin: 0;*/
+	margin: 0;*/
 	margin-left: 45%;
 	margin-top: 5%;
 }
 
-h1 {
+#logo:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+/*h1 {
 	font-family: 'Dorsa', sans-serif;
 	margin: 15px 0;
 	font-size: 2.8em;
@@ -52,7 +57,7 @@ h2 {
 	font-size: 0.75em;
 	margin; -5px 0 0;
 	font-weight: normal;
-}
+}*/
 
 
 
@@ -78,7 +83,7 @@ nav li {
 }
 
 nav a {
-	font-weight: 1500;
+	font-weight: 800; /* 800 1500*/
 	font-size: 120%;
 	padding: 15px 10px;
 }
@@ -136,6 +141,9 @@ PAGE: PROTFOLIO
 PAGE: ABOUT
 **********************************/
 
+section {
+	font-family: 'Lato', sans-serif;
+}
 .grow-up {
 	display: block;
 	max-width: 400px;
@@ -160,10 +168,40 @@ PAGE: ABOUT
 	margin: 0 0 10px;
 }
 
-.contact-info li.mail a {
+.mail {
+	position:relative;
+}
+.mail::before {
+	position:absolute;
+	font-family: FontAwesome;
+	top:0;
+	left:-20px;
+	content: "\f1d8";
+	font-size: 150%;
+}
+/*.contact-info li.mail a {
 	background-image:url('../img/phone.png');
 }
 
+.contact-info::before {
+	content: "";
+}*/
+
+/**********************************
+PAGE: FEEDBACK
+**********************************/
+input:enabled {
+	background: #fcfbcc;
+}
+
+:disabled {
+	background: #ddd;
+}
+
+input[type="radio"]:checked + label {
+	font-size: 150%;
+
+}
 /**********************************
 COLOR
 **********************************/
@@ -209,12 +247,7 @@ nav a, nav a:visited {
 }
 
 /* selected nav link */
-nav a.selected, nav a:hover {
+nav a.selected, nav a:hover, nav a:focus, nav a:active {
 	/*color: #fff;*/
 	text-decoration: underline;
-}
-
-#logo:hover {
-    opacity: 0.8;
-    filter: alpha(opacity=40); /* For IE8 and earlier */
 }

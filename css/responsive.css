@@ -42,7 +42,8 @@ VERY VERY Large Screens
 	nav {
 		float: right;
 		font-size: 1.2em;
-		margin-top: 4%;
+		margin-top: 30px;
+/*		margin-top: 4%;*/		
 		margin-right: 5%;
 		text-align: right;
 		width: 45%;
@@ -52,13 +53,22 @@ VERY VERY Large Screens
 	#logo {
 		float: left;
 		margin: 0;
-		margin-top: 2%;
+		margin-top: 30px;
 		margin-left: 5%;
-/*		text-align: left;
-		width: 45%;*/
+/*		margin-top: 2%;
+		text-align: left;
+		width: 45%;
+		*/
 	}
 
-	h1 {
+	footer {
+		float: left;
+		margin: 0;
+		margin-top: 2%;
+		margin-left: 5%;
+	}
+
+/*  h1 {
 		font-size: 3.6em;
 		margin-bottom: 20px;
 	}
@@ -66,12 +76,12 @@ VERY VERY Large Screens
 	h2 {
 		font-size: 0.825em;
 		margin-bottom: 20px;
-	}
+	}*/
 
 	header {
-		/*border-bottom: 5px solid #343433;*/
-		border-bottom: 5px solid #fff;
-		margin-bottom: 60px;
+/*		border-bottom: 5px solid #343433;
+		border-bottom: 5px solid #fff;*/
+		margin-bottom: 65px;
 	}
 
 }
