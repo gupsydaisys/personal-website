@@ -14,11 +14,6 @@ Large Screens
 		width: 40%;
 		float: right;
 	}
-	/**********************************
-	3 * 5 = 15
-	100 - 15 = 85
-	85 / 3 = 28.333333
-	**********************************/
 
 	/**********************************
 	PAGE: PORTFOLIO;
@@ -39,32 +34,31 @@ VERY VERY Large Screens
 	/**********************************
 	HEADER
 	**********************************/
+
+	/*	margin-top = logo/2 - logo.margin-top - nav height / 2 = 45 + 30 - ?/2 */
 	nav {
 		float: right;
 		font-size: 1.2em;
-		margin-top: 30px;
-/*		margin-top: 4%;*/		
+		margin-top: 55px;		
 		margin-right: 5%;
 		text-align: right;
 		width: 45%;
 		color: #000;
 	}
 
+	/* logo is 90 by 90 */
 	#logo {
 		float: left;
 		margin: 0;
 		margin-top: 30px;
 		margin-left: 5%;
-/*		margin-top: 2%;
-		text-align: left;
-		width: 45%;
-		*/
+
 	}
 
 	footer {
 		float: left;
 		margin: 0;
-		margin-top: 2%;
+		margin-top: 0px;
 		margin-left: 5%;
 	}
 
