@@ -36,6 +36,7 @@ header {
 #logo {
 /*	text-align: center;
 	margin: 0;*/
+	opacity: 1.0;
 	margin-left: 45%;
 	margin-top: 5%;
 }
@@ -93,7 +94,7 @@ FOOTER
 **********************************/
 footer {
 	float: left;
-	font-size: 0.8em;
+	font-size: .9em;
 	/*text-align: center;*/
 	clear: both;
 	margin-left: 4%;
@@ -176,8 +177,9 @@ section {
 	font-family: FontAwesome;
 	top:0;
 	left:-20px;
-	content: "\f1d8";
+	content: "\f0e0";
 	font-size: 150%;
+	color: black;
 }
 /*.contact-info li.mail a {
 	background-image:url('../img/phone.png');
