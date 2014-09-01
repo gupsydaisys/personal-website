@@ -38,44 +38,42 @@ VERY VERY Large Screens
 	/*	margin-top = logo/2 - logo.margin-top - nav height / 2 = 45 + 30 - ?/2 */
 	nav {
 		float: right;
-		font-size: 1.2em;
-		margin-top: 55px;		
-		margin-right: 5%;
+/*		font-size: 1.2em;
+		margin-top: 55px;*/		
+		margin-right: 1%;
 		text-align: right;
-		width: 45%;
-		color: #000;
+/*		width: 45%;
+*/		color: #000;
 	}
 
-	/* logo is 90 by 90 */
-	#logo {
+	h1 {
 		float: left;
-		margin: 0;
-		margin-top: 30px;
-		margin-left: 5%;
-
+		margin-left: 10px;
+		margin-top: 2px;
 	}
+
+/*
 
 	footer {
 		float: left;
 		margin: 0;
 		margin-top: 0px;
 		margin-left: 5%;
-	}
+	}*/
 
-/*  h1 {
-		font-size: 3.6em;
-		margin-bottom: 20px;
-	}
+/*  	h1 {
+  		float: none;
+	}*/
 
-	h2 {
+/*	h2 {
 		font-size: 0.825em;
 		margin-bottom: 20px;
 	}*/
 
-	header {
-/*		border-bottom: 5px solid #343433;
-		border-bottom: 5px solid #fff;*/
+/*	header {
+		border-bottom: 5px solid #343433;
+		border-bottom: 5px solid #fff;
 		margin-bottom: 65px;
-	}
+	}*/
 
 }

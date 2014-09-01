@@ -1,4 +1,16 @@
 /**********************************
+Background Image
+**********************************/
+
+html { 
+  background: url(bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/**********************************
 GENERAL
 **********************************/
 body {
@@ -19,8 +31,23 @@ img {
 	max-width: 100%;
 }
 
-h3 {
-	margin: 0 0 1em 0;
+* {
+	margin: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+.content {
+	min-height: 100%;
+	height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+	height: 100%;
+	margin: 0 auto -2em; /* the bottom margin is the negative value of the footer's height */ /* 4 em is height of footer */
+}
+
+.footer, .push {
+	height: 2em; /* .push must be the same height as .footer */
 }
 
 /**********************************
@@ -28,54 +55,33 @@ HEADING
 **********************************/
 header {
 	float: left;
-	margin: 0 0 30px 0;
-	padding: 5px 0 0 0;
 	width: 100%;
 }
 
-#logo {
-/*	text-align: center;
-	margin: 0;*/
-	opacity: 1.0;
-	margin-left: 45%;
-	margin-top: 5%;
-}
-
-#logo:hover {
-    opacity: 0.7;
-    filter: alpha(opacity=40); /* For IE8 and earlier */
-}
-
-/*h1 {
-	font-family: 'Dorsa', sans-serif;
-	margin: 15px 0;
+h1 {
+	float: none;
+	font-family: 'Oswald', sans-serif;
 	font-size: 2.8em;
-	font-weight: normal;
-	line-height: 0.8em;
+	font-weight: 400;
+	margin-left: 10px;
+	margin-top: 2px;
+	text-align: center
 }
-
-h2 {
-	font-size: 0.75em;
-	margin; -5px 0 0;
-	font-weight: normal;
-}*/
-
-
 
 /**********************************
 NAVAGATION
 **********************************/
 nav {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
 	text-align: center;
-	padding: 10px 0;
-	margin: 20px 0 0;
+	padding: 10px 0px;
 }
 
 nav ul {
 	list-style: none;
-	margin: 0 10px;
-	padding: 0;
+/*	margin: 0 10px;
+	padding: 0;*/
 }
 
 nav li {
@@ -84,35 +90,27 @@ nav li {
 }
 
 nav a {
-	font-weight: 800; /* 800 1500*/
-	font-size: 120%;
-	padding: 15px 10px;
+	font-weight: 300;
+	font-size: 2em;
+	padding: 10px 10px;
 }
+
 
 /**********************************
 FOOTER
 **********************************/
 footer {
 	float: left;
-	font-size: .9em;
-	/*text-align: center;*/
 	clear: both;
-	margin-left: 4%;
-	padding-top: 50px;
-	color: #ccc;
-}
+	margin-left: 10px;
 
-.social-icon {
-	width: 20px;
-	height: 20px;
-	margin: 0 5px;
 }
 
 footer p {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
+	font-size: 1.3em;
 }
-
-/* ADD IN FOOTER IMAGE HERE*/
 
 /**********************************
 PAGE: PROTFOLIO
@@ -207,29 +205,18 @@ input[type="radio"]:checked + label {
 /**********************************
 COLOR
 **********************************/
-
-/* site body */
-body {
-	background-color: #fff;
-	color: #292727;
-}
-
-/* nav background mobile devices */
-nav {
-	/*background: #343433;*/
-	background: #fff;
+footer {
+	color: #fff;
 }
 
 /* Header */
 header {
-	/*background: #343433;*/
-	background: #fff;
+	color: #fff;
 }
 
 /* regular logo text */
 h1, h2 {
-	/*color: #fff;*/
-	color: #343433;
+	color: #ccc;
 }
 
 /* hover logo text */
@@ -237,15 +224,9 @@ h1:hover {
 	color: #999998;
 }
 
-/* links */
-a {
-	color: #32673f;
-}
-
 /* regular nav link */
 nav a, nav a:visited {
-	/*color: #adb1b1;*/
-	color: #000;
+	color: #fff;
 }
 
 /* selected nav link */
