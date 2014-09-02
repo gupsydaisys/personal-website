@@ -1,16 +1,4 @@
 /**********************************
-Background Image
-**********************************/
-
-html { 
-  background: url(bg.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-/**********************************
 GENERAL
 **********************************/
 body {
@@ -65,7 +53,7 @@ h1 {
 	font-weight: 400;
 	margin-left: 10px;
 	margin-top: 2px;
-	text-align: center
+	text-align: center;
 }
 
 /**********************************
@@ -141,21 +129,55 @@ PAGE: ABOUT
 **********************************/
 
 section {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
+	font-size: 1.5em;
+	text-align: center;
 }
-.grow-up {
+
+h3 {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
+	font-size: 1.5em;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    z-index: -10;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.innerBackground {
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 70%;
+}
+
+/*.grow-up {
 	display: block;
 	max-width: 400px;
 	margin: 0 auto 30px;
 	border-radius: 10px;
-}
+}*/
 
 .contact-info {
+	font-family: 'Oswald', sans-serif;
 	padding: 0;
 	margin: 0;
 	font-size: 0.9em;
 	list-style-type: none;
-
 }
 
 .contact-info a {
@@ -163,45 +185,24 @@ section {
 	min-height: 20px;
 	background-repeat: no-repeat;
 	background-size: 20px 20px;
-	padding: 0 0 0 30px;
-	margin: 0 0 10px;
 }
 
 .mail {
 	position:relative;
 }
-.mail::before {
+/*.mail::before {
 	position:absolute;
 	font-family: FontAwesome;
 	top:0;
-	left:-20px;
+	left:0;
 	content: "\f0e0";
-	font-size: 150%;
-	color: black;
-}
-/*.contact-info li.mail a {
-	background-image:url('../img/phone.png');
-}
-
-.contact-info::before {
-	content: "";
+	font-size: 100%;
+	color: white;
 }*/
 
 /**********************************
-PAGE: FEEDBACK
+Correction
 **********************************/
-input:enabled {
-	background: #fcfbcc;
-}
-
-:disabled {
-	background: #ddd;
-}
-
-input[type="radio"]:checked + label {
-	font-size: 150%;
-
-}
 /**********************************
 COLOR
 **********************************/
@@ -215,13 +216,8 @@ header {
 }
 
 /* regular logo text */
-h1, h2 {
+h1 {
 	color: #ccc;
-}
-
-/* hover logo text */
-h1 a:hover {
-	color: #848484;
 }
 
 a {
@@ -229,8 +225,26 @@ a {
 }
 
 nav {
-	background-color: #1f1f1a;
+	background-color: #393535;
 }
+
+section {
+	color: white;
+}
+
+h3 {
+	color: #393535;
+}
+
+.innerBackground {
+	background-color: black;
+}
+
+/* hover logo text */
+h1 a:hover, .mail:hover {
+	color: #848484;
+}
+
 /* regular nav link */
 nav a, nav a:visited {
 	color: #fff;
