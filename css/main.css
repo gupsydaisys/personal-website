@@ -107,43 +107,54 @@ PAGE: PROTFOLIO
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	vertical-align: center;
+	width: 100%
 }
 
 #gallery li {
 	float: left;
-	width: 45%;
-	margin: 2.5%;
-	background-color: #f5f5f5;
-	color: #bdc3c7;
+/*	width: 100%;
+*/	margin: 2.5%;
+/*	background-color: white;
+*/	/*color: #bdc3c7;*/
 }
 
-#gallery li a p {
+#gallery li img {
+	float: left;
+	padding: 2.5%;
+	height: auto;
+	background-color: white;
+/*	color: #bdc3c7;
+*/}
+
+
+/*#gallery li a p {
 	margin: 0;
 	padding: 5%;
 	font-size: 0.75em;
 	color: #bdc3c7;
-}
+}*/
+
 
 /**********************************
 PAGE: ABOUT
 **********************************/
 
 section {
-	font-family: 'Oswald', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	text-align: center;
 }
 
 h3 {
 	font-family: 'Oswald', sans-serif;
 	font-weight: 300;
-	font-size: 1.5em;
+	font-size: 1.8em;
 }
 
 .outer {
     display: table;
-    position: absolute;
     height: 100%;
     z-index: -10;
     width: 100%;
@@ -155,6 +166,8 @@ h3 {
 }
 
 .innerBackground {
+	margin-top: 80px; 
+	margin-bottom: 80px; 
 	margin-left: auto;
     margin-right: auto;
 }
@@ -162,7 +175,11 @@ h3 {
 .inner {
     margin-left: auto;
     margin-right: auto; 
-    width: 70%;
+    width: 60%;
+}
+
+.inner p {
+	padding: 0px 20px;
 }
 
 /*.grow-up {
@@ -176,7 +193,7 @@ h3 {
 	font-family: 'Oswald', sans-serif;
 	padding: 0;
 	margin: 0;
-	font-size: 0.9em;
+	font-size: 1em;
 	list-style-type: none;
 }
 
@@ -200,9 +217,17 @@ h3 {
 	color: white;
 }*/
 
-/**********************************
-Correction
-**********************************/
+div.hr {
+	background: #fff  no-repeat scroll center;
+	/*margin-left: 15em;
+	margin-right: 15em;*/
+	margin-left: auto;
+    margin-right: auto; 
+	width:10em;
+	height:2px;
+}
+
+
 /**********************************
 COLOR
 **********************************/
@@ -233,11 +258,12 @@ section {
 }
 
 h3 {
-	color: #393535;
+	color: #b78383;
 }
 
-.innerBackground {
+.inner {
 	background-color: black;
+	background-color: rgba(0,0,0,0.8);
 }
 
 /* hover logo text */

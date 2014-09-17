@@ -14,24 +14,25 @@ Large Screens
 		width: 40%;
 		float: right;
 	}
-
-	/**********************************
+	
+/*	*********************************
 	PAGE: PORTFOLIO;
-	**********************************/
+	*********************************
 	#gallery li {
-		width: 28.3333333%;
+		width: 43%;
 	}
 
-	#gallery li:nth-child(4n) {
+	#gallery li:nth-child(3n) {
 		clear: left;
-	}
+	}*/
+
+
 }
 
 /**********************************
 VERY VERY Large Screens
 **********************************/
-@media screen and (min-width: 742px) {
-	/* 660 */
+@media screen and (min-width: 757px) {
 	/**********************************
 	HEADER
 	**********************************/
@@ -54,6 +55,16 @@ VERY VERY Large Screens
 		margin-top: 2px;
 	}
 
+	/**********************************
+	PAGE: PORTFOLIO;
+	**********************************/
+	#gallery li {
+		width: 28.3333333%;
+	}
+
+	#gallery li:nth-child(4n) {
+		clear: left;
+	}
 /*
 
 	footer {
