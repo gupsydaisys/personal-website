@@ -154,7 +154,7 @@ PAGE: PROTFOLIO
 #mapR {
 	width:384px;
 	height:288px;
-	content:url("mapR.jpg");
+	content:url("mapr.jpg");
 	padding: 2.5%;
 	background-color: white;
 }
@@ -164,7 +164,7 @@ PAGE: PROTFOLIO
 	height:288px;
 	content:"hellomkljlkjlkjlkj";
 	text-align: center;
-	background:url("mapRH.jpg");
+	background:url("maprH.jpg");
 	background-size:cover;
 }
 
