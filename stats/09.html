@@ -1,0 +1,460 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>methodvsanswer Page9</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(13,9,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load9();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_9{left:115px;top:109px;}
+#t2_9{left:124px;top:118px;}
+#t3_9{left:133px;top:109px;}
+#t4_9{left:115px;top:138px;}
+#t5_9{left:115px;top:225px;}
+#t6_9{left:523px;top:225px;}
+#t7_9{left:115px;top:254px;}
+#t8_9{left:115px;top:342px;}
+#t9_9{left:169px;top:342px;}
+#ta_9{left:255px;top:350px;}
+#tb_9{left:260px;top:342px;}
+#tc_9{left:115px;top:371px;}
+#td_9{left:246px;top:400px;}
+#te_9{left:254px;top:408px;}
+#tf_9{left:259px;top:400px;}
+#tg_9{left:115px;top:429px;}
+#th_9{left:115px;top:458px;}
+#ti_9{left:127px;top:466px;}
+#tj_9{left:133px;top:458px;}
+#tk_9{left:150px;top:466px;}
+#tl_9{left:155px;top:458px;}
+#tm_9{left:178px;top:466px;}
+#tn_9{left:246px;top:458px;}
+#to_9{left:258px;top:466px;}
+#tp_9{left:263px;top:458px;}
+#tq_9{left:280px;top:466px;}
+#tr_9{left:290px;top:458px;}
+#ts_9{left:392px;top:466px;}
+#tt_9{left:115px;top:487px;}
+#tu_9{left:296px;top:496px;}
+#tv_9{left:305px;top:487px;}
+#tw_9{left:334px;top:496px;}
+#tx_9{left:339px;top:487px;}
+#ty_9{left:377px;top:496px;}
+#tz_9{left:387px;top:487px;}
+#t10_9{left:435px;top:496px;}
+#t11_9{left:440px;top:487px;}
+#t12_9{left:485px;top:496px;}
+#t13_9{left:494px;top:487px;}
+#t14_9{left:523px;top:496px;}
+#t15_9{left:528px;top:487px;}
+#t16_9{left:566px;top:496px;}
+#t17_9{left:576px;top:487px;}
+#t18_9{left:624px;top:496px;}
+#t19_9{left:629px;top:487px;}
+#t1a_9{left:115px;top:518px;}
+#t1b_9{left:173px;top:518px;}
+#t1c_9{left:182px;top:518px;}
+#t1d_9{left:277px;top:518px;}
+#t1e_9{left:286px;top:518px;}
+#t1f_9{left:115px;top:547px;}
+#t1g_9{left:115px;top:577px;}
+#t1h_9{left:115px;top:607px;}
+#t1i_9{left:209px;top:607px;}
+#t1j_9{left:115px;top:637px;}
+#t1k_9{left:115px;top:666px;}
+#t1l_9{left:359px;top:666px;}
+#t1m_9{left:381px;top:666px;}
+#t1n_9{left:141px;top:695px;}
+#t1o_9{left:188px;top:705px;}
+#t1p_9{left:193px;top:695px;}
+#t1q_9{left:225px;top:705px;}
+#t1r_9{left:230px;top:695px;}
+#t1s_9{left:115px;top:724px;}
+#t1t_9{left:124px;top:734px;}
+#t1u_9{left:133px;top:724px;}
+#t1v_9{left:115px;top:753px;}
+#t1w_9{left:115px;top:812px;}
+#t1x_9{left:560px;top:812px;}
+#t1y_9{left:115px;top:841px;}
+#t1z_9{left:115px;top:870px;}
+#t20_9{left:115px;top:921px;}
+#t21_9{left:170px;top:949px;}
+#t22_9{left:115px;top:978px;}
+#t23_9{left:745px;top:978px;}
+#t24_9{left:115px;top:1007px;}
+#t25_9{left:115px;top:1036px;}
+#t26_9{left:271px;top:1036px;}
+#t27_9{left:115px;top:1065px;}
+#t28_9{left:402px;top:197px;}
+#t29_9{left:471px;top:763px;}
+#t2a_9{left:567px;top:763px;}
+
+.s1_9{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: ASPCMM-Times-Roman9;
+	color: rgb(0,0,0);
+}
+
+.s4_9{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: CLSUEP-TimesNewRomanPSMT9;
+	color: rgb(0,0,0);
+}
+
+.s7_9{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: TJJFGK-TimesNewRomanPS-BoldIta9;
+	color: rgb(0,0,0);
+}
+
+.s3_9{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: DXOFOC-Times-Italic9;
+	color: rgb(0,0,0);
+}
+
+.s2_9{
+	FONT-SIZE: 39px;
+	FONT-FAMILY: ASPCMM-Times-Roman9;
+	color: rgb(0,0,0);
+}
+
+.s5_9{
+	FONT-SIZE: 42px;
+	FONT-FAMILY: CLSUEP-TimesNewRomanPSMT9;
+	color: rgb(0,0,0);
+}
+
+.s6_9{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: ZPFPWT-Symbol9;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ASPCMM-Times-Roman9;
+	src: url("09/fonts/ASPCMM-Times-Roman.eot");
+	src: url("09/fonts/ASPCMM-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("09/fonts/ASPCMM-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: TJJFGK-TimesNewRomanPS-BoldIta9;
+	src: url("09/fonts/TJJFGK-TimesNewRomanPS-BoldIta.eot");
+	src: url("09/fonts/TJJFGK-TimesNewRomanPS-BoldIta.eot?#iefix") format("embedded-opentype"),
+		url("09/fonts/TJJFGK-TimesNewRomanPS-BoldIta.woff") format("woff");
+}
+
+@font-face {
+	font-family: ZPFPWT-Symbol9;
+	src: url("09/fonts/ZPFPWT-Symbol.eot");
+	src: url("09/fonts/ZPFPWT-Symbol.eot?#iefix") format("embedded-opentype"),
+		url("09/fonts/ZPFPWT-Symbol.woff") format("woff");
+}
+
+@font-face {
+	font-family: DXOFOC-Times-Italic9;
+	src: url("09/fonts/DXOFOC-Times-Italic.eot");
+	src: url("09/fonts/DXOFOC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("09/fonts/DXOFOC-Times-Italic.woff") format("woff");
+}
+
+@font-face {
+	font-family: CLSUEP-TimesNewRomanPSMT9;
+	src: url("09/fonts/CLSUEP-TimesNewRomanPSMT.eot");
+	src: url("09/fonts/CLSUEP-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("09/fonts/CLSUEP-TimesNewRomanPSMT.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_9" class="t s1_9">p</div>
+<div id="t2_9" class="t s2_9">$</div>
+<div id="t3_9" class="t s1_9">= 39/140 </div>
+<div id="t4_9" class="t s1_9">p-value = .0006755 =  </div>
+<div id="t5_9" class="t s1_9">You reject the null hypothesis since the p-value is so small. </div>
+<div id="t6_9" class="t s1_9">Significantly higher amounts of people </div>
+<div id="t7_9" class="t s1_9">respond yes when asked about sex not anonymously than anonymously at Menlo.  </div>
+<div id="t8_9" class="t s3_9">Test G)</div>
+<div id="t9_9" class="t s4_9">Parameter: p</div>
+<div id="ta_9" class="t s5_9">1</div>
+<div id="tb_9" class="t s4_9">= the true proportion of people who responded yes on the Internet (survey </div>
+<div id="tc_9" class="t s4_9">monkey or Facebook chat) </div>
+<div id="td_9" class="t s4_9">p</div>
+<div id="te_9" class="t s5_9">2</div>
+<div id="tf_9" class="t s4_9">= the true proportion of people who responded yes not on the Internet (face-to-</div>
+<div id="tg_9" class="t s4_9">face or written survey) </div>
+<div id="th_9" class="t s4_9">H</div>
+<div id="ti_9" class="t s5_9">0</div>
+<div id="tj_9" class="t s4_9">: p</div>
+<div id="tk_9" class="t s5_9">1</div>
+<div id="tl_9" class="t s4_9">= p</div>
+<div id="tm_9" class="t s5_9">2</div>
+<div id="tn_9" class="t s4_9">H</div>
+<div id="to_9" class="t s5_9">a</div>
+<div id="tp_9" class="t s4_9">: p</div>
+<div id="tq_9" class="t s5_9">1</div>
+<div id="tr_9" class="t s4_9">doesn’t equal p</div>
+<div id="ts_9" class="t s5_9">2</div>
+<div id="tt_9" class="t s1_9">Assumptions: normality (n</div>
+<div id="tu_9" class="t s2_9">1</div>
+<div id="tv_9" class="t s1_9">phat</div>
+<div id="tw_9" class="t s2_9">1</div>
+<div id="tx_9" class="t s1_9">&gt; 5, n</div>
+<div id="ty_9" class="t s2_9">1</div>
+<div id="tz_9" class="t s1_9">(1-phat</div>
+<div id="t10_9" class="t s2_9">1</div>
+<div id="t11_9" class="t s1_9">)&gt; 5, n</div>
+<div id="t12_9" class="t s2_9">2</div>
+<div id="t13_9" class="t s1_9">phat</div>
+<div id="t14_9" class="t s2_9">2</div>
+<div id="t15_9" class="t s1_9">&gt; 5, n</div>
+<div id="t16_9" class="t s2_9">2</div>
+<div id="t17_9" class="t s1_9">(1-phat</div>
+<div id="t18_9" class="t s2_9">2</div>
+<div id="t19_9" class="t s1_9">)&gt; 5 so approximately </div>
+<div id="t1a_9" class="t s1_9">normal) </div>
+<div id="t1b_9" class="t s6_9">√</div>
+<div id="t1c_9" class="t s1_9">, SRS (given) </div>
+<div id="t1d_9" class="t s6_9">√</div>
+<div id="t1e_9" class="t s1_9">, Independent (since I took the samples I know that no one talked to anyone </div>
+<div id="t1f_9" class="t s1_9">else especially on the face-to-face ones and am pretty sure the each person in the sample is independent </div>
+<div id="t1g_9" class="t s1_9">from another and the two samples are independent of each other since no one who said yes knows who </div>
+<div id="t1h_9" class="t s1_9">else said yes) </div>
+<div id="t1i_9" class="t s6_9">√</div>
+<div id="t1j_9" class="t s1_9">Name the Test: Two-Proportion Z Test </div>
+<div id="t1k_9" class="t s1_9">z = (17/70– 21/70) </div>
+<div id="t1l_9" class="t s1_9">= </div>
+<div id="t1m_9" class="t s1_9">-.7602 </div>
+<div id="t1n_9" class="t s1_9">sqrt ( p</div>
+<div id="t1o_9" class="t s2_9">$</div>
+<div id="t1p_9" class="t s1_9">(1- p</div>
+<div id="t1q_9" class="t s2_9">$</div>
+<div id="t1r_9" class="t s1_9">) (2/70) ) </div>
+<div id="t1s_9" class="t s1_9">p</div>
+<div id="t1t_9" class="t s2_9">$</div>
+<div id="t1u_9" class="t s1_9">= 38/140 </div>
+<div id="t1v_9" class="t s1_9">p-value = .4471 =  </div>
+<div id="t1w_9" class="t s1_9">You don’t reject the null hypothesis since the p-value is so large. </div>
+<div id="t1x_9" class="t s1_9">There is no significant difference in </div>
+<div id="t1y_9" class="t s1_9">the amount of people who respond yes when asked about sex on the Internet versus in person/on paper </div>
+<div id="t1z_9" class="t s1_9">at Menlo High School.  </div>
+<div id="t20_9" class="t s7_9">Final Summary of Project: </div>
+<div id="t21_9" class="t s4_9">With my four surveys, I attempted to answer the question of how the method one surveys </div>
+<div id="t22_9" class="t s4_9">people about controversial questions affects their answer and whether it has any affect at all. </div>
+<div id="t23_9" class="t s4_9">I figured </div>
+<div id="t24_9" class="t s4_9">out using a chi-squared test that there is no significant difference overall in how you survey people and </div>
+<div id="t25_9" class="t s4_9">their answer (Test A). </div>
+<div id="t26_9" class="t s4_9">I found this to be pretty interesting since we spent a good deal of time going </div>
+<div id="t27_9" class="t s4_9">over different biases and thus divulged further.  While there isn’t a significant difference in </div>
+<div id="t28_9" class="t s1_9">-3.2049</div>
+<div id="t29_9" class="t s1_9">-.7602</div>
+<div id="t2a_9" class="t s1_9">.7602</div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg9Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg9"><object width="935" height="1210" data="09/9.svg" type="image/svg+xml" id="pdf9" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f9 = [['t3_9',241],['t4_9',596],['t5_9',1596],['t6_9',1049],['t7_9',2208],['t8_9',199],['t9_9',341],['tb_9',1986],['tc_9',718],['tf_9',2118],['tg_9',610],['tj_9',68],['tl_9',87],['tp_9',68],['tr_9',410],['tt_9',720],['tx_9',154],['t11_9',177],['t15_9',154],['t19_9',592],['t1c_9',364],['t1e_9',2033],['t1f_9',2783],['t1g_9',2766],['t1h_9',358],['t1j_9',1051],['t1k_9',502],['t1n_9',189],['t1p_9',128],['t1r_9',242],['t1u_9',241],['t1v_9',495],['t1w_9',1743],['t1x_9',961],['t1y_9',2757],['t1z_9',629],['t20_9',748],['t21_9',2404],['t22_9',2484],['t23_9',233],['t24_9',2768],['t25_9',589],['t26_9',2047],['t27_9',2451]];
+function load9(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f9);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 83;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_9");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

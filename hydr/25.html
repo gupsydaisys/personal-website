@@ -1,0 +1,393 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page25</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,25,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load25();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_25{left:730px;top:54px;}
+#t2_25{left:468px;top:109px;}
+#t3_25{left:523px;top:128px;}
+#t4_25{left:577px;top:128px;}
+#t5_25{left:468px;top:147px;}
+#t6_25{left:468px;top:167px;}
+#t7_25{left:498px;top:167px;}
+#t8_25{left:512px;top:167px;}
+#t9_25{left:468px;top:186px;}
+#ta_25{left:523px;top:206px;}
+#tb_25{left:576px;top:206px;}
+#tc_25{left:468px;top:225px;}
+#td_25{left:468px;top:244px;}
+#te_25{left:498px;top:244px;}
+#tf_25{left:512px;top:244px;}
+#tg_25{left:468px;top:264px;}
+#th_25{left:523px;top:283px;}
+#ti_25{left:565px;top:283px;}
+#tj_25{left:468px;top:302px;}
+#tk_25{left:468px;top:322px;}
+#tl_25{left:498px;top:322px;}
+#tm_25{left:512px;top:322px;}
+#tn_25{left:468px;top:341px;}
+#to_25{left:523px;top:361px;}
+#tp_25{left:557px;top:361px;}
+#tq_25{left:468px;top:380px;}
+#tr_25{left:468px;top:400px;}
+#ts_25{left:498px;top:400px;}
+#tt_25{left:512px;top:400px;}
+#tu_25{left:468px;top:419px;}
+#tv_25{left:523px;top:439px;}
+#tw_25{left:588px;top:439px;}
+#tx_25{left:468px;top:458px;}
+#ty_25{left:468px;top:477px;}
+#tz_25{left:498px;top:477px;}
+#t10_25{left:512px;top:477px;}
+#t11_25{left:468px;top:497px;}
+#t12_25{left:523px;top:516px;}
+#t13_25{left:590px;top:516px;}
+#t14_25{left:468px;top:535px;}
+#t15_25{left:468px;top:555px;}
+#t16_25{left:498px;top:555px;}
+#t17_25{left:512px;top:555px;}
+#t18_25{left:468px;top:574px;}
+#t19_25{left:523px;top:594px;}
+#t1a_25{left:605px;top:594px;}
+#t1b_25{left:468px;top:613px;}
+#t1c_25{left:468px;top:632px;}
+#t1d_25{left:498px;top:632px;}
+#t1e_25{left:512px;top:632px;}
+#t1f_25{left:468px;top:652px;}
+#t1g_25{left:523px;top:671px;}
+#t1h_25{left:613px;top:671px;}
+#t1i_25{left:468px;top:691px;}
+#t1j_25{left:413px;top:710px;}
+#t1k_25{left:413px;top:730px;}
+#t1l_25{left:358px;top:749px;}
+#t1m_25{left:303px;top:788px;}
+#t1n_25{left:248px;top:807px;}
+#t1o_25{left:193px;top:826px;}
+#t1p_25{left:138px;top:904px;}
+
+.s4_25{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: QVYMEI-Times-Bold25;
+	color: rgb(127,0,85);
+}
+
+.s1_25{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT25;
+	color: rgb(0,0,0);
+}
+
+.s3_25{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: GZBYMC-Times-Italic25;
+	color: rgb(0,0,192);
+}
+
+.s2_25{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman25;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT25;
+	src: url("25/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("25/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("25/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman25;
+	src: url("25/fonts/SNLSFN-Times-Roman.eot");
+	src: url("25/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("25/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: GZBYMC-Times-Italic25;
+	src: url("25/fonts/GZBYMC-Times-Italic.eot");
+	src: url("25/fonts/GZBYMC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("25/fonts/GZBYMC-Times-Italic.woff") format("woff");
+}
+
+@font-face {
+	font-family: QVYMEI-Times-Bold25;
+	src: url("25/fonts/QVYMEI-Times-Bold.eot");
+	src: url("25/fonts/QVYMEI-Times-Bold.eot?#iefix") format("embedded-opentype"),
+		url("25/fonts/QVYMEI-Times-Bold.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_25" class="t s1_25">Gupta 25 </div>
+<div id="t2_25" class="t s2_25">{ </div>
+<div id="t3_25" class="t s3_25">SEVEN</div>
+<div id="t4_25" class="t s2_25">++; </div>
+<div id="t5_25" class="t s2_25">} </div>
+<div id="t6_25" class="t s4_25">else</div>
+<div id="t7_25" class="t s4_25">if</div>
+<div id="t8_25" class="t s2_25">(rps == 8) </div>
+<div id="t9_25" class="t s2_25">{ </div>
+<div id="ta_25" class="t s3_25">EIGHT</div>
+<div id="tb_25" class="t s2_25">++; </div>
+<div id="tc_25" class="t s2_25">} </div>
+<div id="td_25" class="t s4_25">else</div>
+<div id="te_25" class="t s4_25">if</div>
+<div id="tf_25" class="t s2_25">(rps == 9) </div>
+<div id="tg_25" class="t s2_25">{ </div>
+<div id="th_25" class="t s3_25">NINE</div>
+<div id="ti_25" class="t s2_25">++; </div>
+<div id="tj_25" class="t s2_25">} </div>
+<div id="tk_25" class="t s4_25">else</div>
+<div id="tl_25" class="t s4_25">if</div>
+<div id="tm_25" class="t s2_25">(rps == 10) </div>
+<div id="tn_25" class="t s2_25">{ </div>
+<div id="to_25" class="t s3_25">TEN</div>
+<div id="tp_25" class="t s2_25">++; </div>
+<div id="tq_25" class="t s2_25">} </div>
+<div id="tr_25" class="t s4_25">else</div>
+<div id="ts_25" class="t s4_25">if</div>
+<div id="tt_25" class="t s2_25">(rps == 11) </div>
+<div id="tu_25" class="t s2_25">{ </div>
+<div id="tv_25" class="t s3_25">ELEVEN</div>
+<div id="tw_25" class="t s2_25">++; </div>
+<div id="tx_25" class="t s2_25">} </div>
+<div id="ty_25" class="t s4_25">else</div>
+<div id="tz_25" class="t s4_25">if</div>
+<div id="t10_25" class="t s2_25">(rps == 12) </div>
+<div id="t11_25" class="t s2_25">{ </div>
+<div id="t12_25" class="t s3_25">TWELVE</div>
+<div id="t13_25" class="t s2_25">++; </div>
+<div id="t14_25" class="t s2_25">} </div>
+<div id="t15_25" class="t s4_25">else</div>
+<div id="t16_25" class="t s4_25">if</div>
+<div id="t17_25" class="t s2_25">(rps == 13) </div>
+<div id="t18_25" class="t s2_25">{ </div>
+<div id="t19_25" class="t s3_25">THIRTEEN</div>
+<div id="t1a_25" class="t s2_25">++; </div>
+<div id="t1b_25" class="t s2_25">} </div>
+<div id="t1c_25" class="t s4_25">else</div>
+<div id="t1d_25" class="t s4_25">if</div>
+<div id="t1e_25" class="t s2_25">(rps == 14) </div>
+<div id="t1f_25" class="t s2_25">{ </div>
+<div id="t1g_25" class="t s3_25">FOURTEEN</div>
+<div id="t1h_25" class="t s2_25">++; </div>
+<div id="t1i_25" class="t s2_25">} </div>
+<div id="t1j_25" class="t s2_25">} </div>
+<div id="t1k_25" class="t s2_25">m ++; </div>
+<div id="t1l_25" class="t s2_25">} </div>
+<div id="t1m_25" class="t s2_25">} </div>
+<div id="t1n_25" class="t s2_25">} </div>
+<div id="t1o_25" class="t s2_25">} </div>
+<div id="t1p_25" class="t s2_25">} </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg25Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg25"><object width="935" height="1210" data="25/25.svg" type="image/svg+xml" id="pdf25" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f25 = [['t1_25',271],['t8_25',269],['tf_25',269],['tm_25',303],['tt_25',303],['t10_25',303],['t17_25',303],['t1e_25',303],['t1k_25',162]];
+function load25(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f25);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 62;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_25");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

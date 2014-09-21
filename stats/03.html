@@ -1,0 +1,345 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>methodvsanswer Page3</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(13,3,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load3();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_3{left:115px;top:106px;}
+#t2_3{left:115px;top:131px;}
+#t3_3{left:115px;top:156px;}
+#t4_3{left:392px;top:156px;}
+#t5_3{left:115px;top:181px;}
+#t6_3{left:115px;top:207px;}
+#t7_3{left:174px;top:207px;}
+#t8_3{left:418px;top:207px;}
+#t9_3{left:115px;top:232px;}
+#ta_3{left:260px;top:232px;}
+#tb_3{left:791px;top:232px;}
+#tc_3{left:115px;top:257px;}
+#td_3{left:521px;top:257px;}
+#te_3{left:115px;top:282px;}
+#tf_3{left:115px;top:307px;}
+#tg_3{left:115px;top:333px;}
+#th_3{left:115px;top:358px;}
+#ti_3{left:115px;top:383px;}
+#tj_3{left:115px;top:434px;}
+#tk_3{left:115px;top:459px;}
+#tl_3{left:353px;top:459px;}
+#tm_3{left:673px;top:459px;}
+#tn_3{left:115px;top:484px;}
+#to_3{left:115px;top:509px;}
+#tp_3{left:312px;top:509px;}
+#tq_3{left:115px;top:534px;}
+#tr_3{left:115px;top:585px;}
+#ts_3{left:115px;top:610px;}
+#tt_3{left:115px;top:635px;}
+#tu_3{left:355px;top:635px;}
+#tv_3{left:115px;top:661px;}
+#tw_3{left:115px;top:685px;}
+#tx_3{left:174px;top:685px;}
+#ty_3{left:418px;top:685px;}
+#tz_3{left:115px;top:711px;}
+#t10_3{left:260px;top:711px;}
+#t11_3{left:791px;top:711px;}
+#t12_3{left:115px;top:736px;}
+#t13_3{left:115px;top:761px;}
+#t14_3{left:115px;top:786px;}
+#t15_3{left:115px;top:812px;}
+#t16_3{left:401px;top:812px;}
+#t17_3{left:115px;top:837px;}
+#t18_3{left:115px;top:887px;}
+#t19_3{left:735px;top:887px;}
+#t1a_3{left:115px;top:912px;}
+#t1b_3{left:558px;top:912px;}
+#t1c_3{left:115px;top:938px;}
+#t1d_3{left:782px;top:938px;}
+#t1e_3{left:115px;top:963px;}
+
+.s1_3{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: DXOFOC-Times-Italic3;
+	color: rgb(0,0,0);
+}
+
+.s2_3{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: ASPCMM-Times-Roman3;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ASPCMM-Times-Roman3;
+	src: url("03/fonts/ASPCMM-Times-Roman.eot");
+	src: url("03/fonts/ASPCMM-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("03/fonts/ASPCMM-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: DXOFOC-Times-Italic3;
+	src: url("03/fonts/DXOFOC-Times-Italic.eot");
+	src: url("03/fonts/DXOFOC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("03/fonts/DXOFOC-Times-Italic.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_3" class="t s1_3">Face-to-face Group</div>
+<div id="t2_3" class="t s2_3">The face-to-face group was all asked the question sometime in the last two weeks. For all the people, I </div>
+<div id="t3_3" class="t s2_3">would not bring it up mid-conversation. </div>
+<div id="t4_3" class="t s2_3">I would first ask them then chat with them if I chat at all with </div>
+<div id="t5_3" class="t s2_3">them. The conversation would go as follows for everyone: </div>
+<div id="t6_3" class="t s2_3">Serena: </div>
+<div id="t7_3" class="t s2_3">“Hi, I’m Serena, a junior at Menlo. </div>
+<div id="t8_3" class="t s2_3">For my stats class, we are taking surveys of people to </div>
+<div id="t9_3" class="t s2_3">statistically analyze. </div>
+<div id="ta_3" class="t s2_3">My project focuses on how survey type affects people’s answers to questions. </div>
+<div id="tb_3" class="t s2_3">I </div>
+<div id="tc_3" class="t s2_3">was wondering if you had a minute to answer my question. </div>
+<div id="td_3" class="t s2_3">If you choose to answer, know that I won’t </div>
+<div id="te_3" class="t s2_3">tell your name or answer to anyone.” </div>
+<div id="tf_3" class="t s2_3">Other Person: “Ya, go for it” (Most typical response) </div>
+<div id="tg_3" class="t s2_3">Serena: “Have you ever had sexual intercourse?” </div>
+<div id="th_3" class="t s2_3">Other Person: … </div>
+<div id="ti_3" class="t s2_3">Serena: “Thanks for your time!” </div>
+<div id="tj_3" class="t s2_3">Note: Unsurprisingly, I turned mildly pink asking most seniors and some other people, which probably </div>
+<div id="tk_3" class="t s2_3">made them take me less seriously. </div>
+<div id="tl_3" class="t s2_3">Also, the venue wasn’t the same for everyone. </div>
+<div id="tm_3" class="t s2_3">I tried to ask the </div>
+<div id="tn_3" class="t s2_3">question the same way, but sometimes I would seem more happy or sad or stressed out, which could </div>
+<div id="to_3" class="t s2_3">have affected the responses. </div>
+<div id="tp_3" class="t s2_3">In the future, I probably would have asked like everyone at lunch or </div>
+<div id="tq_3" class="t s2_3">something and tried to act similar each time. </div>
+<div id="tr_3" class="t s1_3">Written Questionnaire Group</div>
+<div id="ts_3" class="t s2_3">The written questionnaire group was all given the survey sometime in the last two weeks. My means </div>
+<div id="tt_3" class="t s2_3">for handing it out were as follows. </div>
+<div id="tu_3" class="t s2_3">The conversation would go as follows for everyone (even the </div>
+<div id="tv_3" class="t s2_3">people who I already knew): </div>
+<div id="tw_3" class="t s2_3">Serena: </div>
+<div id="tx_3" class="t s2_3">“Hi, I’m Serena, a junior at Menlo. </div>
+<div id="ty_3" class="t s2_3">For my stats class, we are taking surveys of people to </div>
+<div id="tz_3" class="t s2_3">statistically analyze. </div>
+<div id="t10_3" class="t s2_3">My project focuses on how survey type affects people’s answers to questions. </div>
+<div id="t11_3" class="t s2_3">I </div>
+<div id="t12_3" class="t s2_3">was wondering if you had a minute to take my survey. If you choose to answer, know that I won’t tell </div>
+<div id="t13_3" class="t s2_3">your name or answer to anyone.” </div>
+<div id="t14_3" class="t s2_3">Other Person: “Ya, sure” (Most typical response) </div>
+<div id="t15_3" class="t s2_3">Other Person: (Scribble scribble scribble. </div>
+<div id="t16_3" class="t s2_3">Then they hand it to me.) </div>
+<div id="t17_3" class="t s2_3">Serena: “Thanks for your time!” </div>
+<div id="t18_3" class="t s2_3">Note: As I said before with the face-to-face group, the venue varied from person to person. </div>
+<div id="t19_3" class="t s2_3">I think that </div>
+<div id="t1a_3" class="t s2_3">less affected the answering this time but nonetheless could have. </div>
+<div id="t1b_3" class="t s2_3">I also forgot to provide pens for </div>
+<div id="t1c_3" class="t s2_3">everyone, which led to a bit of chaos but again, didn’t dramatically affect answering I don’t think. </div>
+<div id="t1d_3" class="t s2_3">In </div>
+<div id="t1e_3" class="t s2_3">the future, providing pens would be good and having the same setting would be good. </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg3Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg3"><object width="935" height="1210" data="03/3.svg" type="image/svg+xml" id="pdf3" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f3 = [['t1_3',535],['t2_3',2755],['t3_3',1071],['t4_3',1649],['t5_3',1570],['t7_3',942],['t8_3',1435],['t9_3',545],['ta_3',2091],['tc_3',1589],['td_3',1155],['te_3',994],['tf_3',1428],['tg_3',1317],['th_3',455],['ti_3',869],['tj_3',2767],['tk_3',918],['tl_3',1244],['tm_3',436],['tn_3',2697],['to_3',754],['tp_3',1827],['tq_3',1194],['tr_3',794],['ts_3',2704],['tt_3',924],['tu_3',1648],['tv_3',769],['tx_3',942],['ty_3',1435],['tz_3',545],['t10_3',2091],['t12_3',2737],['t13_3',892],['t14_3',1323],['t15_3',1110],['t16_3',679],['t17_3',869],['t18_3',2443],['t19_3',294],['t1a_3',1735],['t1b_3',854],['t1c_3',2633],['t1e_3',2307]];
+function load3(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f3);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 51;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_3");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

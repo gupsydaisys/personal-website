@@ -1,0 +1,665 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page23</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,23,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load23();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_23{left:730px;top:54px;}
+#t2_23{left:138px;top:109px;}
+#t3_23{left:138px;top:128px;}
+#t4_23{left:511px;top:128px;}
+#t5_23{left:138px;top:147px;}
+#t6_23{left:138px;top:186px;}
+#t7_23{left:186px;top:186px;}
+#t8_23{left:224px;top:186px;}
+#t9_23{left:193px;top:225px;}
+#ta_23{left:197px;top:244px;}
+#tb_23{left:209px;top:244px;}
+#tc_23{left:276px;top:244px;}
+#td_23{left:197px;top:264px;}
+#te_23{left:193px;top:302px;}
+#tf_23{left:235px;top:302px;}
+#tg_23{left:258px;top:302px;letter-spacing:1px;}
+#th_23{left:298px;top:302px;}
+#ti_23{left:193px;top:322px;}
+#tj_23{left:235px;top:322px;}
+#tk_23{left:258px;top:322px;letter-spacing:1px;}
+#tl_23{left:315px;top:322px;}
+#tm_23{left:193px;top:341px;}
+#tn_23{left:235px;top:341px;}
+#to_23{left:259px;top:341px;}
+#tp_23{left:308px;top:341px;}
+#tq_23{left:193px;top:361px;}
+#tr_23{left:235px;top:361px;}
+#ts_23{left:259px;top:361px;}
+#tt_23{left:299px;top:361px;}
+#tu_23{left:193px;top:380px;}
+#tv_23{left:235px;top:380px;}
+#tw_23{left:258px;top:380px;}
+#tx_23{left:287px;top:380px;}
+#ty_23{left:193px;top:400px;}
+#tz_23{left:235px;top:400px;}
+#t10_23{left:258px;top:400px;letter-spacing:1px;}
+#t11_23{left:313px;top:400px;}
+#t12_23{left:193px;top:419px;}
+#t13_23{left:235px;top:419px;}
+#t14_23{left:259px;top:419px;}
+#t15_23{left:312px;top:419px;}
+#t16_23{left:193px;top:439px;}
+#t17_23{left:235px;top:439px;}
+#t18_23{left:258px;top:439px;letter-spacing:1px;}
+#t19_23{left:301px;top:439px;}
+#t1a_23{left:193px;top:458px;}
+#t1b_23{left:235px;top:458px;}
+#t1c_23{left:258px;top:458px;letter-spacing:1px;}
+#t1d_23{left:294px;top:458px;}
+#t1e_23{left:193px;top:477px;}
+#t1f_23{left:235px;top:477px;}
+#t1g_23{left:259px;top:477px;}
+#t1h_23{left:325px;top:477px;}
+#t1i_23{left:193px;top:497px;}
+#t1j_23{left:235px;top:497px;}
+#t1k_23{left:258px;top:497px;letter-spacing:1px;}
+#t1l_23{left:326px;top:497px;}
+#t1m_23{left:193px;top:516px;}
+#t1n_23{left:235px;top:516px;}
+#t1o_23{left:258px;top:516px;}
+#t1p_23{left:341px;top:516px;}
+#t1q_23{left:193px;top:535px;}
+#t1r_23{left:235px;top:535px;}
+#t1s_23{left:259px;top:535px;}
+#t1t_23{left:349px;top:535px;}
+#t1u_23{left:193px;top:594px;}
+#t1v_23{left:241px;top:594px;}
+#t1w_23{left:284px;top:594px;}
+#t1x_23{left:319px;top:594px;}
+#t1y_23{left:193px;top:613px;}
+#t1z_23{left:248px;top:632px;}
+#t20_23{left:301px;top:632px;}
+#t21_23{left:322px;top:632px;}
+#t22_23{left:377px;top:632px;}
+#t23_23{left:523px;top:632px;}
+#t24_23{left:633px;top:632px;}
+#t25_23{left:760px;top:632px;}
+#t26_23{left:248px;top:652px;}
+#t27_23{left:306px;top:652px;}
+#t28_23{left:248px;top:671px;}
+#t29_23{left:306px;top:671px;}
+#t2a_23{left:248px;top:691px;}
+#t2b_23{left:306px;top:691px;}
+#t2c_23{left:248px;top:710px;}
+#t2d_23{left:306px;top:710px;}
+#t2e_23{left:248px;top:730px;}
+#t2f_23{left:306px;top:730px;}
+#t2g_23{left:248px;top:749px;}
+#t2h_23{left:306px;top:749px;}
+#t2i_23{left:248px;top:769px;}
+#t2j_23{left:306px;top:769px;}
+#t2k_23{left:248px;top:788px;}
+#t2l_23{left:306px;top:788px;}
+#t2m_23{left:248px;top:807px;}
+#t2n_23{left:301px;top:807px;}
+#t2o_23{left:322px;top:807px;}
+#t2p_23{left:413px;top:807px;}
+#t2q_23{left:477px;top:807px;letter-spacing:1px;}
+#t2r_23{left:491px;top:807px;letter-spacing:1px;}
+#t2s_23{left:527px;top:807px;}
+#t2t_23{left:248px;top:826px;}
+#t2u_23{left:301px;top:826px;}
+#t2v_23{left:322px;top:826px;}
+#t2w_23{left:413px;top:826px;}
+#t2x_23{left:494px;top:826px;}
+#t2y_23{left:507px;top:826px;letter-spacing:1px;}
+#t2z_23{left:559px;top:826px;}
+#t30_23{left:248px;top:846px;}
+#t31_23{left:301px;top:846px;}
+#t32_23{left:322px;top:846px;}
+#t33_23{left:413px;top:846px;}
+#t34_23{left:484px;top:846px;letter-spacing:1px;}
+#t35_23{left:498px;top:846px;}
+#t36_23{left:542px;top:846px;}
+#t37_23{left:248px;top:865px;}
+#t38_23{left:301px;top:865px;}
+#t39_23{left:322px;top:865px;}
+#t3a_23{left:413px;top:865px;}
+#t3b_23{left:477px;top:865px;}
+#t3c_23{left:490px;top:865px;}
+#t3d_23{left:527px;top:865px;}
+#t3e_23{left:248px;top:885px;}
+#t3f_23{left:301px;top:885px;}
+#t3g_23{left:322px;top:885px;}
+#t3h_23{left:413px;top:885px;}
+#t3i_23{left:466px;top:885px;}
+#t3j_23{left:480px;top:885px;}
+#t3k_23{left:504px;top:885px;}
+#t3l_23{left:248px;top:904px;}
+#t3m_23{left:301px;top:904px;}
+#t3n_23{left:322px;top:904px;}
+#t3o_23{left:413px;top:904px;}
+#t3p_23{left:494px;top:904px;}
+#t3q_23{left:507px;top:904px;letter-spacing:1px;}
+#t3r_23{left:557px;top:904px;}
+#t3s_23{left:248px;top:924px;}
+#t3t_23{left:301px;top:924px;}
+#t3u_23{left:322px;top:924px;}
+#t3v_23{left:413px;top:924px;}
+#t3w_23{left:490px;top:924px;letter-spacing:1px;}
+#t3x_23{left:503px;top:924px;}
+#t3y_23{left:553px;top:924px;}
+#t3z_23{left:248px;top:943px;}
+#t40_23{left:301px;top:943px;}
+#t41_23{left:322px;top:943px;}
+#t42_23{left:413px;top:943px;}
+#t43_23{left:479px;top:943px;letter-spacing:1px;}
+#t44_23{left:493px;top:943px;letter-spacing:1px;}
+#t45_23{left:531px;top:943px;}
+#t46_23{left:248px;top:962px;}
+#t47_23{left:301px;top:962px;}
+#t48_23{left:322px;top:962px;}
+#t49_23{left:413px;top:962px;}
+#t4a_23{left:472px;top:962px;}
+#t4b_23{left:485px;top:962px;}
+#t4c_23{left:516px;top:962px;}
+#t4d_23{left:248px;top:982px;}
+#t4e_23{left:301px;top:982px;}
+#t4f_23{left:322px;top:982px;}
+#t4g_23{left:413px;top:982px;}
+#t4h_23{left:505px;top:982px;}
+#t4i_23{left:518px;top:982px;}
+#t4j_23{left:580px;top:982px;}
+#t4k_23{left:248px;top:1001px;}
+#t4l_23{left:301px;top:1001px;}
+#t4m_23{left:322px;top:1001px;}
+#t4n_23{left:413px;top:1001px;}
+#t4o_23{left:508px;top:1001px;letter-spacing:1px;}
+#t4p_23{left:522px;top:1001px;letter-spacing:1px;}
+#t4q_23{left:585px;top:1001px;}
+#t4r_23{left:248px;top:1021px;}
+#t4s_23{left:301px;top:1021px;}
+#t4t_23{left:322px;top:1021px;}
+#t4u_23{left:413px;top:1021px;}
+#t4v_23{left:521px;top:1021px;}
+#t4w_23{left:535px;top:1021px;}
+#t4x_23{left:613px;top:1021px;}
+#t4y_23{left:248px;top:1040px;}
+#t4z_23{left:301px;top:1040px;}
+#t50_23{left:322px;top:1040px;}
+#t51_23{left:413px;top:1040px;}
+#t52_23{left:527px;top:1040px;letter-spacing:1px;}
+#t53_23{left:541px;top:1040px;}
+#t54_23{left:626px;top:1040px;}
+#t55_23{left:193px;top:1059px;}
+
+.s1_23{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT23;
+	color: rgb(0,0,0);
+}
+
+.s3_23{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman23;
+	color: rgb(0,0,0);
+}
+
+.s6_23{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: QVYMEI-Times-Bold23;
+	color: rgb(127,159,191);
+}
+
+.s7_23{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: GZBYMC-Times-Italic23;
+	color: rgb(0,0,192);
+}
+
+.s8_23{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman23;
+	color: rgb(42,0,255);
+}
+
+.s4_23{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: QVYMEI-Times-Bold23;
+	color: rgb(127,0,85);
+}
+
+.s5_23{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman23;
+	color: rgb(63,95,191);
+}
+
+.s2_23{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: GZBYMC-Times-Italic23;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT23;
+	src: url("23/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("23/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("23/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman23;
+	src: url("23/fonts/SNLSFN-Times-Roman.eot");
+	src: url("23/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("23/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: GZBYMC-Times-Italic23;
+	src: url("23/fonts/GZBYMC-Times-Italic.eot");
+	src: url("23/fonts/GZBYMC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("23/fonts/GZBYMC-Times-Italic.woff") format("woff");
+}
+
+@font-face {
+	font-family: QVYMEI-Times-Bold23;
+	src: url("23/fonts/QVYMEI-Times-Bold.eot");
+	src: url("23/fonts/QVYMEI-Times-Bold.eot?#iefix") format("embedded-opentype"),
+		url("23/fonts/QVYMEI-Times-Bold.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_23" class="t s1_23">Gupta 23 </div>
+<div id="t2_23" class="t s2_23">Appendix B </div>
+<div id="t3_23" class="t s3_23">The following program was written in Java in Eclipse. </div>
+<div id="t4_23" class="t s3_23">It was used to determine the best RPS and </div>
+<div id="t5_23" class="t s3_23">use an error of plus or minus 1.5 Hz. </div>
+<div id="t6_23" class="t s4_23">public</div>
+<div id="t7_23" class="t s4_23">class</div>
+<div id="t8_23" class="t s3_23">hydraulophone { </div>
+<div id="t9_23" class="t s5_23">/**</div>
+<div id="ta_23" class="t s5_23">*</div>
+<div id="tb_23" class="t s6_23">@param</div>
+<div id="tc_23" class="t s5_23">args</div>
+<div id="td_23" class="t s5_23">*/</div>
+<div id="te_23" class="t s4_23">static</div>
+<div id="tf_23" class="t s4_23">int</div>
+<div id="tg_23" class="t s7_23">TWO</div>
+<div id="th_23" class="t s3_23">= 0; </div>
+<div id="ti_23" class="t s4_23">static</div>
+<div id="tj_23" class="t s4_23">int</div>
+<div id="tk_23" class="t s7_23">THREE</div>
+<div id="tl_23" class="t s3_23">= 0; </div>
+<div id="tm_23" class="t s4_23">static</div>
+<div id="tn_23" class="t s4_23">int</div>
+<div id="to_23" class="t s7_23">FOUR</div>
+<div id="tp_23" class="t s3_23">= 0; </div>
+<div id="tq_23" class="t s4_23">static</div>
+<div id="tr_23" class="t s4_23">int</div>
+<div id="ts_23" class="t s7_23">FIVE</div>
+<div id="tt_23" class="t s3_23">= 0; </div>
+<div id="tu_23" class="t s4_23">static</div>
+<div id="tv_23" class="t s4_23">int</div>
+<div id="tw_23" class="t s7_23">SIX</div>
+<div id="tx_23" class="t s3_23">= 0; </div>
+<div id="ty_23" class="t s4_23">static</div>
+<div id="tz_23" class="t s4_23">int</div>
+<div id="t10_23" class="t s7_23">SEVEN</div>
+<div id="t11_23" class="t s3_23">= 0; </div>
+<div id="t12_23" class="t s4_23">static</div>
+<div id="t13_23" class="t s4_23">int</div>
+<div id="t14_23" class="t s7_23">EIGHT</div>
+<div id="t15_23" class="t s3_23">= 0; </div>
+<div id="t16_23" class="t s4_23">static</div>
+<div id="t17_23" class="t s4_23">int</div>
+<div id="t18_23" class="t s7_23">NINE</div>
+<div id="t19_23" class="t s3_23">= 0; </div>
+<div id="t1a_23" class="t s4_23">static</div>
+<div id="t1b_23" class="t s4_23">int</div>
+<div id="t1c_23" class="t s7_23">TEN</div>
+<div id="t1d_23" class="t s3_23">= 0; </div>
+<div id="t1e_23" class="t s4_23">static</div>
+<div id="t1f_23" class="t s4_23">int</div>
+<div id="t1g_23" class="t s7_23">ELEVEN</div>
+<div id="t1h_23" class="t s3_23">= 0; </div>
+<div id="t1i_23" class="t s4_23">static</div>
+<div id="t1j_23" class="t s4_23">int</div>
+<div id="t1k_23" class="t s7_23">TWELVE</div>
+<div id="t1l_23" class="t s3_23">= 0; </div>
+<div id="t1m_23" class="t s4_23">static</div>
+<div id="t1n_23" class="t s4_23">int</div>
+<div id="t1o_23" class="t s7_23">THIRTEEN</div>
+<div id="t1p_23" class="t s3_23">= 0; </div>
+<div id="t1q_23" class="t s4_23">static</div>
+<div id="t1r_23" class="t s4_23">int</div>
+<div id="t1s_23" class="t s7_23">FOURTEEN</div>
+<div id="t1t_23" class="t s3_23">= 0; </div>
+<div id="t1u_23" class="t s4_23">public</div>
+<div id="t1v_23" class="t s4_23">static</div>
+<div id="t1w_23" class="t s4_23">void</div>
+<div id="t1x_23" class="t s3_23">main(String[] args)  </div>
+<div id="t1y_23" class="t s3_23">{ </div>
+<div id="t1z_23" class="t s3_23">System.</div>
+<div id="t20_23" class="t s7_23">out</div>
+<div id="t21_23" class="t s3_23">.println(</div>
+<div id="t22_23" class="t s8_23">"Frequency:  </div>
+<div id="t23_23" class="t s8_23">RPS: </div>
+<div id="t24_23" class="t s8_23">Number of Holes:"</div>
+<div id="t25_23" class="t s3_23">); </div>
+<div id="t26_23" class="t s2_23">generate</div>
+<div id="t27_23" class="t s3_23">(130.80); </div>
+<div id="t28_23" class="t s2_23">generate</div>
+<div id="t29_23" class="t s3_23">(146.83); </div>
+<div id="t2a_23" class="t s2_23">generate</div>
+<div id="t2b_23" class="t s3_23">(164.81); </div>
+<div id="t2c_23" class="t s2_23">generate</div>
+<div id="t2d_23" class="t s3_23">(174.61); </div>
+<div id="t2e_23" class="t s2_23">generate</div>
+<div id="t2f_23" class="t s3_23">(196.00); </div>
+<div id="t2g_23" class="t s2_23">generate</div>
+<div id="t2h_23" class="t s3_23">(220.00); </div>
+<div id="t2i_23" class="t s2_23">generate</div>
+<div id="t2j_23" class="t s3_23">(246.94); </div>
+<div id="t2k_23" class="t s2_23">generate</div>
+<div id="t2l_23" class="t s3_23">(261.63); </div>
+<div id="t2m_23" class="t s3_23">System.</div>
+<div id="t2n_23" class="t s7_23">out</div>
+<div id="t2o_23" class="t s3_23">.println( </div>
+<div id="t2p_23" class="t s8_23">"TWO: "</div>
+<div id="t2q_23" class="t s3_23">+ </div>
+<div id="t2r_23" class="t s7_23">TWO</div>
+<div id="t2s_23" class="t s3_23">); </div>
+<div id="t2t_23" class="t s3_23">System.</div>
+<div id="t2u_23" class="t s7_23">out</div>
+<div id="t2v_23" class="t s3_23">.println( </div>
+<div id="t2w_23" class="t s8_23">"THREE: "</div>
+<div id="t2x_23" class="t s3_23">+ </div>
+<div id="t2y_23" class="t s7_23">THREE</div>
+<div id="t2z_23" class="t s3_23">); </div>
+<div id="t30_23" class="t s3_23">System.</div>
+<div id="t31_23" class="t s7_23">out</div>
+<div id="t32_23" class="t s3_23">.println( </div>
+<div id="t33_23" class="t s8_23">"FOUR: "</div>
+<div id="t34_23" class="t s3_23">+ </div>
+<div id="t35_23" class="t s7_23">FOUR</div>
+<div id="t36_23" class="t s3_23">); </div>
+<div id="t37_23" class="t s3_23">System.</div>
+<div id="t38_23" class="t s7_23">out</div>
+<div id="t39_23" class="t s3_23">.println( </div>
+<div id="t3a_23" class="t s8_23">"FIVE: "</div>
+<div id="t3b_23" class="t s3_23">+ </div>
+<div id="t3c_23" class="t s7_23">FIVE</div>
+<div id="t3d_23" class="t s3_23">); </div>
+<div id="t3e_23" class="t s3_23">System.</div>
+<div id="t3f_23" class="t s7_23">out</div>
+<div id="t3g_23" class="t s3_23">.println( </div>
+<div id="t3h_23" class="t s8_23">"SIX: "</div>
+<div id="t3i_23" class="t s3_23">+ </div>
+<div id="t3j_23" class="t s7_23">SIX</div>
+<div id="t3k_23" class="t s3_23">); </div>
+<div id="t3l_23" class="t s3_23">System.</div>
+<div id="t3m_23" class="t s7_23">out</div>
+<div id="t3n_23" class="t s3_23">.println( </div>
+<div id="t3o_23" class="t s8_23">"SEVEN: "</div>
+<div id="t3p_23" class="t s3_23">+ </div>
+<div id="t3q_23" class="t s7_23">SEVEN</div>
+<div id="t3r_23" class="t s3_23">); </div>
+<div id="t3s_23" class="t s3_23">System.</div>
+<div id="t3t_23" class="t s7_23">out</div>
+<div id="t3u_23" class="t s3_23">.println( </div>
+<div id="t3v_23" class="t s8_23">"EIGHT: "</div>
+<div id="t3w_23" class="t s3_23">+ </div>
+<div id="t3x_23" class="t s7_23">EIGHT</div>
+<div id="t3y_23" class="t s3_23">); </div>
+<div id="t3z_23" class="t s3_23">System.</div>
+<div id="t40_23" class="t s7_23">out</div>
+<div id="t41_23" class="t s3_23">.println( </div>
+<div id="t42_23" class="t s8_23">"NINE: "</div>
+<div id="t43_23" class="t s3_23">+ </div>
+<div id="t44_23" class="t s7_23">NINE</div>
+<div id="t45_23" class="t s3_23">); </div>
+<div id="t46_23" class="t s3_23">System.</div>
+<div id="t47_23" class="t s7_23">out</div>
+<div id="t48_23" class="t s3_23">.println( </div>
+<div id="t49_23" class="t s8_23">"TEN: "</div>
+<div id="t4a_23" class="t s3_23">+ </div>
+<div id="t4b_23" class="t s7_23">TEN</div>
+<div id="t4c_23" class="t s3_23">); </div>
+<div id="t4d_23" class="t s3_23">System.</div>
+<div id="t4e_23" class="t s7_23">out</div>
+<div id="t4f_23" class="t s3_23">.println( </div>
+<div id="t4g_23" class="t s8_23">"ELEVEN: "</div>
+<div id="t4h_23" class="t s3_23">+ </div>
+<div id="t4i_23" class="t s7_23">ELEVEN</div>
+<div id="t4j_23" class="t s3_23">); </div>
+<div id="t4k_23" class="t s3_23">System.</div>
+<div id="t4l_23" class="t s7_23">out</div>
+<div id="t4m_23" class="t s3_23">.println( </div>
+<div id="t4n_23" class="t s8_23">"TWELVE: "</div>
+<div id="t4o_23" class="t s3_23">+ </div>
+<div id="t4p_23" class="t s7_23">TWELVE</div>
+<div id="t4q_23" class="t s3_23">); </div>
+<div id="t4r_23" class="t s3_23">System.</div>
+<div id="t4s_23" class="t s7_23">out</div>
+<div id="t4t_23" class="t s3_23">.println( </div>
+<div id="t4u_23" class="t s8_23">"THIRTEEN: "</div>
+<div id="t4v_23" class="t s3_23">+ </div>
+<div id="t4w_23" class="t s7_23">THIRTEEN</div>
+<div id="t4x_23" class="t s3_23">); </div>
+<div id="t4y_23" class="t s3_23">System.</div>
+<div id="t4z_23" class="t s7_23">out</div>
+<div id="t50_23" class="t s3_23">.println( </div>
+<div id="t51_23" class="t s8_23">"FOURTEEN: "</div>
+<div id="t52_23" class="t s3_23">+ </div>
+<div id="t53_23" class="t s7_23">FOURTEEN</div>
+<div id="t54_23" class="t s3_23">); </div>
+<div id="t55_23" class="t s3_23">} </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg23Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg23"><object width="935" height="1210" data="23/23.svg" type="image/svg+xml" id="pdf23" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f23 = [['t1_23',271],['t2_23',310],['t3_23',1460],['t4_23',1130],['t5_23',984],['t8_23',451],['th_23',105],['tl_23',105],['tp_23',107],['tt_23',107],['tx_23',107],['t11_23',107],['t15_23',105],['t19_23',107],['t1d_23',107],['t1h_23',107],['t1l_23',107],['t1p_23',105],['t1t_23',107],['t1x_23',532],['t22_23',360],['t24_23',512],['t2p_23',242],['t2w_23',305],['t33_23',268],['t3a_23',238],['t3h_23',197],['t3o_23',305],['t3v_23',290],['t42_23',249],['t49_23',220],['t4g_23',351],['t4n_23',365],['t4u_23',418],['t51_23',440]];
+function load23(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f23);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 186;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_23");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

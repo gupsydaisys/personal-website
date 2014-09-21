@@ -1,0 +1,430 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>methodvsanswer Page6</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(13,6,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load6();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_6{left:115px;top:106px;}
+#t2_6{left:115px;top:131px;}
+#t3_6{left:168px;top:131px;}
+#t4_6{left:719px;top:131px;}
+#t5_6{left:115px;top:156px;}
+#t6_6{left:255px;top:196px;}
+#t7_6{left:388px;top:196px;}
+#t8_6{left:519px;top:196px;}
+#t9_6{left:652px;top:183px;}
+#ta_6{left:652px;top:208px;}
+#tb_6{left:115px;top:235px;}
+#tc_6{left:255px;top:235px;}
+#td_6{left:388px;top:235px;}
+#te_6{left:519px;top:235px;}
+#tf_6{left:652px;top:235px;}
+#tg_6{left:115px;top:266px;}
+#th_6{left:216px;top:266px;}
+#ti_6{left:415px;top:266px;}
+#tj_6{left:115px;top:293px;}
+#tk_6{left:232px;top:293px;}
+#tl_6{left:241px;top:293px;}
+#tm_6{left:356px;top:293px;}
+#tn_6{left:369px;top:293px;}
+#to_6{left:174px;top:318px;}
+#tp_6{left:327px;top:318px;}
+#tq_6{left:120px;top:343px;}
+#tr_6{left:115px;top:369px;}
+#ts_6{left:202px;top:369px;}
+#tt_6{left:115px;top:647px;}
+#tu_6{left:168px;top:647px;}
+#tv_6{left:115px;top:672px;}
+#tw_6{left:212px;top:672px;}
+#tx_6{left:115px;top:698px;}
+#ty_6{left:251px;top:736px;}
+#tz_6{left:386px;top:736px;}
+#t10_6{left:521px;top:736px;}
+#t11_6{left:657px;top:724px;}
+#t12_6{left:657px;top:749px;}
+#t13_6{left:115px;top:775px;}
+#t14_6{left:251px;top:775px;}
+#t15_6{left:386px;top:775px;}
+#t16_6{left:521px;top:775px;}
+#t17_6{left:657px;top:775px;}
+#t18_6{left:115px;top:801px;}
+#t19_6{left:115px;top:826px;}
+#t1a_6{left:115px;top:856px;}
+#t1b_6{left:216px;top:856px;}
+#t1c_6{left:415px;top:856px;}
+#t1d_6{left:115px;top:882px;}
+#t1e_6{left:224px;top:882px;}
+#t1f_6{left:233px;top:882px;}
+#t1g_6{left:356px;top:882px;}
+#t1h_6{left:369px;top:882px;}
+#t1i_6{left:174px;top:908px;}
+#t1j_6{left:327px;top:908px;}
+#t1k_6{left:120px;top:933px;}
+#t1l_6{left:115px;top:958px;}
+#t1m_6{left:202px;top:958px;}
+#t1n_6{left:265px;top:571px;}
+#t1o_6{left:311px;top:402px;}
+#t1p_6{left:311px;top:422px;}
+#t1q_6{left:386px;top:422px;}
+#t1r_6{left:311px;top:442px;}
+#t1s_6{left:320px;top:1000px;}
+#t1t_6{left:721px;top:1000px;}
+#t1u_6{left:320px;top:1021px;}
+#t1v_6{left:320px;top:1042px;}
+
+.s1_6{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: QFYQCQ-Times-BoldItalic6;
+	color: rgb(0,0,0);
+}
+
+.s5_6{
+	FONT-SIZE: 39px;
+	FONT-FAMILY: ASPCMM-Times-Roman6;
+	color: rgb(0,0,0);
+}
+
+.s3_6{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: ASPCMM-Times-Roman6;
+	color: rgb(0,0,0);
+}
+
+.s7_6{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: CLSUEP-TimesNewRomanPSMT6;
+	color: rgb(0,0,0);
+}
+
+.s2_6{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: DXOFOC-Times-Italic6;
+	color: rgb(0,0,0);
+}
+
+.s6_6{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: CLSUEP-TimesNewRomanPSMT6;
+	color: rgb(0,0,0);
+}
+
+.s4_6{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: ZPFPWT-Symbol6;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ASPCMM-Times-Roman6;
+	src: url("06/fonts/ASPCMM-Times-Roman.eot");
+	src: url("06/fonts/ASPCMM-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("06/fonts/ASPCMM-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: ZPFPWT-Symbol6;
+	src: url("06/fonts/ZPFPWT-Symbol.eot");
+	src: url("06/fonts/ZPFPWT-Symbol.eot?#iefix") format("embedded-opentype"),
+		url("06/fonts/ZPFPWT-Symbol.woff") format("woff");
+}
+
+@font-face {
+	font-family: CLSUEP-TimesNewRomanPSMT6;
+	src: url("06/fonts/CLSUEP-TimesNewRomanPSMT.eot");
+	src: url("06/fonts/CLSUEP-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("06/fonts/CLSUEP-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: DXOFOC-Times-Italic6;
+	src: url("06/fonts/DXOFOC-Times-Italic.eot");
+	src: url("06/fonts/DXOFOC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("06/fonts/DXOFOC-Times-Italic.woff") format("woff");
+}
+
+@font-face {
+	font-family: QFYQCQ-Times-BoldItalic6;
+	src: url("06/fonts/QFYQCQ-Times-BoldItalic.eot");
+	src: url("06/fonts/QFYQCQ-Times-BoldItalic.eot?#iefix") format("embedded-opentype"),
+		url("06/fonts/QFYQCQ-Times-BoldItalic.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_6" class="t s1_6">Summary of Research: </div>
+<div id="t2_6" class="t s2_6">Test A) </div>
+<div id="t3_6" class="t s3_6">My null hypothesis is there is no difference in questionnaire method and answer. </div>
+<div id="t4_6" class="t s3_6">My </div>
+<div id="t5_6" class="t s3_6">alternative is there is a difference in questionnaire method and answer. </div>
+<div id="t6_6" class="t s3_6">Facebook Chat </div>
+<div id="t7_6" class="t s3_6">Survey Monkey </div>
+<div id="t8_6" class="t s3_6">Face-to-Face </div>
+<div id="t9_6" class="t s3_6">Written </div>
+<div id="ta_6" class="t s3_6">Questionnaire  </div>
+<div id="tb_6" class="t s3_6">Yes </div>
+<div id="tc_6" class="t s3_6">11 </div>
+<div id="td_6" class="t s3_6">7 </div>
+<div id="te_6" class="t s3_6">17 </div>
+<div id="tf_6" class="t s3_6">4 </div>
+<div id="tg_6" class="t s3_6">Assumptions: </div>
+<div id="th_6" class="t s3_6">at least 5 for expected values </div>
+<div id="ti_6" class="t s4_6">√</div>
+<div id="tj_6" class="t s3_6">Chi = (11 – 39/4)</div>
+<div id="tk_6" class="t s5_6">2</div>
+<div id="tl_6" class="t s3_6">+ … + (4 – 39/4)</div>
+<div id="tm_6" class="t s5_6">2</div>
+<div id="tn_6" class="t s3_6">= </div>
+<div id="to_6" class="t s3_6">39/4 </div>
+<div id="tp_6" class="t s3_6">39/4 </div>
+<div id="tq_6" class="t s3_6">= .01002 + .7756 + 5.391 + 3.3910 = 9.5676 </div>
+<div id="tr_6" class="t s3_6">df = 3 </div>
+<div id="ts_6" class="t s3_6">p= .02262 </div>
+<div id="tt_6" class="t s2_6">Test B)</div>
+<div id="tu_6" class="t s3_6">My null hypothesis is there is no difference in questionnaire method and amount of males that </div>
+<div id="tv_6" class="t s3_6">answered no. </div>
+<div id="tw_6" class="t s3_6">My alternative is there is a difference in questionnaire method and amount of males that </div>
+<div id="tx_6" class="t s3_6">answered no.</div>
+<div id="ty_6" class="t s3_6">Facebook Chat </div>
+<div id="tz_6" class="t s3_6">Survey Monkey </div>
+<div id="t10_6" class="t s3_6">Face-to-Face </div>
+<div id="t11_6" class="t s3_6">Written </div>
+<div id="t12_6" class="t s3_6">Questionnaire  </div>
+<div id="t13_6" class="t s3_6">Male - No </div>
+<div id="t14_6" class="t s3_6">8 </div>
+<div id="t15_6" class="t s3_6">9 </div>
+<div id="t16_6" class="t s3_6">4 </div>
+<div id="t17_6" class="t s3_6">12 </div>
+<div id="t18_6" class="t s3_6">(Note: I took an SRS of size 14 of the males who answered to get how many people out of 14 answered </div>
+<div id="t19_6" class="t s3_6">no to each of the surveys)</div>
+<div id="t1a_6" class="t s3_6">Assumptions: </div>
+<div id="t1b_6" class="t s3_6">at least 5 for expected values </div>
+<div id="t1c_6" class="t s4_6">√</div>
+<div id="t1d_6" class="t s3_6">Chi = (8 – 34/4)</div>
+<div id="t1e_6" class="t s5_6">2</div>
+<div id="t1f_6" class="t s3_6">+ … + (12 – 34/4)</div>
+<div id="t1g_6" class="t s5_6">2</div>
+<div id="t1h_6" class="t s3_6">= </div>
+<div id="t1i_6" class="t s3_6">34/4 </div>
+<div id="t1j_6" class="t s3_6">34/4 </div>
+<div id="t1k_6" class="t s3_6">= .02941 + .02941 + 2.3824 + 1.4412 = 3.8824 </div>
+<div id="t1l_6" class="t s3_6">df = 3 </div>
+<div id="t1m_6" class="t s3_6">p= .2744 </div>
+<div id="t1n_6" class="t s6_6">9.5676 </div>
+<div id="t1o_6" class="t s7_6">Using the significance level of 1%, you can’t reject the null since the p-value is </div>
+<div id="t1p_6" class="t s7_6">about .02. </div>
+<div id="t1q_6" class="t s7_6">There isn’t a significant difference in questionnaire method and how </div>
+<div id="t1r_6" class="t s7_6">people answer about sex at Menlo High School. </div>
+<div id="t1s_6" class="t s6_6">You don’t reject the null since the p-value is so large. </div>
+<div id="t1t_6" class="t s6_6">There is no </div>
+<div id="t1u_6" class="t s6_6">significant difference in questionnaire method and how many males </div>
+<div id="t1v_6" class="t s6_6">answer no about having sex at Menlo High School. </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg6Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg6"><object width="935" height="1210" data="06/6.svg" type="image/svg+xml" id="pdf6" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f6 = [['t1_6',638],['t2_6',192],['t3_6',2171],['t5_6',1898],['t6_6',405],['t7_6',431],['ta_6',393],['th_6',778],['tj_6',466],['tl_6',458],['tq_6',1197],['tr_6',161],['ts_6',273],['tt_6',191],['tu_6',2529],['tv_6',354],['tw_6',2366],['tx_6',354],['ty_6',405],['tz_6',431],['t12_6',393],['t13_6',276],['t18_6',2783],['t19_6',692],['t1b_6',778],['t1d_6',433],['t1f_6',491],['t1k_6',1265],['t1l_6',161],['t1m_6',239],['t1o_6',2133],['t1p_6',266],['t1q_6',1842],['t1r_6',1288],['t1s_6',1570],['t1t_6',329],['t1u_6',1991],['t1v_6',1402]];
+function load6(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f6);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 68;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_6");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

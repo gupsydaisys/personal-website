@@ -1,0 +1,507 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page18</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,18,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load18();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_18{left:730px;top:54px;}
+#t2_18{left:138px;top:206px;}
+#t3_18{left:188px;top:168px;}
+#t4_18{left:188px;top:187px;}
+#t5_18{left:188px;top:206px;}
+#t6_18{left:271px;top:168px;}
+#t7_18{left:271px;top:187px;}
+#t8_18{left:271px;top:206px;}
+#t9_18{left:389px;top:187px;}
+#ta_18{left:389px;top:206px;}
+#tb_18{left:499px;top:168px;}
+#tc_18{left:499px;top:187px;}
+#td_18{left:499px;top:206px;}
+#te_18{left:578px;top:109px;}
+#tf_18{left:578px;top:129px;}
+#tg_18{left:578px;top:148px;}
+#th_18{left:698px;top:109px;}
+#ti_18{left:698px;top:129px;}
+#tj_18{left:698px;top:148px;}
+#tk_18{left:698px;top:168px;}
+#tl_18{left:698px;top:187px;}
+#tm_18{left:698px;top:206px;}
+#tn_18{left:138px;top:227px;}
+#to_18{left:224px;top:227px;}
+#tp_18{left:334px;top:227px;}
+#tq_18{left:402px;top:227px;}
+#tr_18{left:544px;top:227px;}
+#ts_18{left:593px;top:227px;}
+#tt_18{left:709px;top:227px;}
+#tu_18{left:138px;top:247px;}
+#tv_18{left:224px;top:247px;}
+#tw_18{left:334px;top:247px;}
+#tx_18{left:394px;top:247px;}
+#ty_18{left:544px;top:247px;}
+#tz_18{left:593px;top:247px;}
+#t10_18{left:709px;top:247px;}
+#t11_18{left:138px;top:267px;}
+#t12_18{left:224px;top:267px;}
+#t13_18{left:334px;top:267px;}
+#t14_18{left:394px;top:267px;}
+#t15_18{left:536px;top:267px;}
+#t16_18{left:593px;top:267px;}
+#t17_18{left:709px;top:267px;}
+#t18_18{left:138px;top:287px;}
+#t19_18{left:224px;top:287px;}
+#t1a_18{left:334px;top:287px;}
+#t1b_18{left:394px;top:287px;}
+#t1c_18{left:536px;top:287px;}
+#t1d_18{left:593px;top:287px;}
+#t1e_18{left:718px;top:287px;}
+#t1f_18{left:138px;top:307px;}
+#t1g_18{left:224px;top:307px;}
+#t1h_18{left:334px;top:307px;}
+#t1i_18{left:394px;top:307px;}
+#t1j_18{left:536px;top:307px;}
+#t1k_18{left:593px;top:307px;}
+#t1l_18{left:709px;top:307px;}
+#t1m_18{left:138px;top:327px;}
+#t1n_18{left:224px;top:327px;}
+#t1o_18{left:334px;top:327px;}
+#t1p_18{left:394px;top:327px;}
+#t1q_18{left:536px;top:327px;}
+#t1r_18{left:593px;top:327px;}
+#t1s_18{left:709px;top:327px;}
+#t1t_18{left:138px;top:348px;}
+#t1u_18{left:224px;top:348px;}
+#t1v_18{left:326px;top:348px;}
+#t1w_18{left:394px;top:348px;}
+#t1x_18{left:536px;top:348px;}
+#t1y_18{left:593px;top:348px;}
+#t1z_18{left:709px;top:348px;}
+#t20_18{left:138px;top:368px;}
+#t21_18{left:224px;top:368px;}
+#t22_18{left:326px;top:368px;}
+#t23_18{left:394px;top:368px;}
+#t24_18{left:536px;top:368px;}
+#t25_18{left:593px;top:368px;}
+#t26_18{left:709px;top:368px;}
+#t27_18{left:138px;top:388px;}
+#t28_18{left:138px;top:407px;}
+#t29_18{left:514px;top:407px;}
+#t2a_18{left:762px;top:407px;}
+#t2b_18{left:138px;top:427px;}
+#t2c_18{left:138px;top:446px;}
+#t2d_18{left:138px;top:485px;}
+#t2e_18{left:617px;top:485px;}
+#t2f_18{left:699px;top:485px;}
+#t2g_18{left:138px;top:504px;}
+#t2h_18{left:138px;top:543px;}
+#t2i_18{left:138px;top:562px;}
+#t2j_18{left:138px;top:582px;}
+#t2k_18{left:290px;top:582px;}
+#t2l_18{left:138px;top:601px;}
+#t2m_18{left:138px;top:640px;}
+#t2n_18{left:138px;top:660px;}
+#t2o_18{left:138px;top:679px;}
+#t2p_18{left:605px;top:679px;}
+#t2q_18{left:138px;top:698px;}
+#t2r_18{left:138px;top:737px;}
+#t2s_18{left:138px;top:756px;}
+#t2t_18{left:353px;top:756px;}
+#t2u_18{left:747px;top:756px;}
+#t2v_18{left:138px;top:776px;}
+#t2w_18{left:138px;top:795px;}
+#t2x_18{left:138px;top:834px;}
+#t2y_18{left:138px;top:854px;}
+#t2z_18{left:138px;top:892px;}
+#t30_18{left:138px;top:912px;}
+#t31_18{left:138px;top:931px;}
+#t32_18{left:138px;top:951px;}
+#t33_18{left:229px;top:951px;}
+#t34_18{left:138px;top:970px;}
+#t35_18{left:138px;top:990px;}
+#t36_18{left:138px;top:1009px;}
+#t37_18{left:311px;top:1009px;}
+#t38_18{left:138px;top:1048px;}
+#t39_18{left:138px;top:1067px;}
+#t3a_18{left:506px;top:1067px;}
+
+.s1_18{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT18;
+	color: rgb(0,0,0);
+}
+
+.s3_18{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: GZBYMC-Times-Italic18;
+	color: rgb(0,0,0);
+}
+
+.s4_18{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: QVYMEI-Times-Bold18;
+	color: rgb(0,0,0);
+}
+
+.s2_18{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman18;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT18;
+	src: url("18/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("18/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("18/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman18;
+	src: url("18/fonts/SNLSFN-Times-Roman.eot");
+	src: url("18/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("18/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: GZBYMC-Times-Italic18;
+	src: url("18/fonts/GZBYMC-Times-Italic.eot");
+	src: url("18/fonts/GZBYMC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("18/fonts/GZBYMC-Times-Italic.woff") format("woff");
+}
+
+@font-face {
+	font-family: QVYMEI-Times-Bold18;
+	src: url("18/fonts/QVYMEI-Times-Bold.eot");
+	src: url("18/fonts/QVYMEI-Times-Bold.eot?#iefix") format("embedded-opentype"),
+		url("18/fonts/QVYMEI-Times-Bold.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_18" class="t s1_18">Gupta 18 </div>
+<div id="t2_18" class="t s2_18">Note </div>
+<div id="t3_18" class="t s2_18">Diameter </div>
+<div id="t4_18" class="t s2_18">of Tube </div>
+<div id="t5_18" class="t s2_18">(mm) </div>
+<div id="t6_18" class="t s2_18">Ideal </div>
+<div id="t7_18" class="t s2_18">Circumference </div>
+<div id="t8_18" class="t s2_18">(mm) </div>
+<div id="t9_18" class="t s2_18">Radius of </div>
+<div id="ta_18" class="t s2_18">Circle (mm) </div>
+<div id="tb_18" class="t s2_18">Rounded </div>
+<div id="tc_18" class="t s2_18">Radius </div>
+<div id="td_18" class="t s2_18">of Circle </div>
+<div id="te_18" class="t s2_18">Edited </div>
+<div id="tf_18" class="t s2_18">Circumference </div>
+<div id="tg_18" class="t s2_18">(mm) </div>
+<div id="th_18" class="t s2_18">Absolute </div>
+<div id="ti_18" class="t s2_18">Difference </div>
+<div id="tj_18" class="t s2_18">between Ideal </div>
+<div id="tk_18" class="t s2_18">Circumference </div>
+<div id="tl_18" class="t s2_18">and Edited </div>
+<div id="tm_18" class="t s2_18">Circumference </div>
+<div id="tn_18" class="t s2_18">C3 </div>
+<div id="to_18" class="t s2_18">6.35 </div>
+<div id="tp_18" class="t s2_18">558.8 </div>
+<div id="tq_18" class="t s2_18">88.9357822 </div>
+<div id="tr_18" class="t s2_18">89 </div>
+<div id="ts_18" class="t s2_18">559.2034923 </div>
+<div id="tt_18" class="t s2_18">0.403492339 </div>
+<div id="tu_18" class="t s2_18">D3 </div>
+<div id="tv_18" class="t s2_18">6.35 </div>
+<div id="tw_18" class="t s2_18">622.3 </div>
+<div id="tx_18" class="t s2_18">99.04212109 </div>
+<div id="ty_18" class="t s2_18">99 </div>
+<div id="tz_18" class="t s2_18">622.0353454 </div>
+<div id="t10_18" class="t s2_18">0.264654589 </div>
+<div id="t11_18" class="t s2_18">E3 </div>
+<div id="t12_18" class="t s2_18">6.35 </div>
+<div id="t13_18" class="t s2_18">698.5 </div>
+<div id="t14_18" class="t s2_18">111.1697277 </div>
+<div id="t15_18" class="t s2_18">111 </div>
+<div id="t16_18" class="t s2_18">697.4335691 </div>
+<div id="t17_18" class="t s2_18">1.066430903 </div>
+<div id="t18_18" class="t s2_18">F3 </div>
+<div id="t19_18" class="t s2_18">6.35 </div>
+<div id="t1a_18" class="t s2_18">736.6 </div>
+<div id="t1b_18" class="t s2_18">117.2335311 </div>
+<div id="t1c_18" class="t s2_18">117 </div>
+<div id="t1d_18" class="t s2_18">735.1326809 </div>
+<div id="t1e_18" class="t s2_18">1.46731906 </div>
+<div id="t1f_18" class="t s2_18">G3 </div>
+<div id="t1g_18" class="t s2_18">6.35 </div>
+<div id="t1h_18" class="t s2_18">825.5 </div>
+<div id="t1i_18" class="t s2_18">131.3824055 </div>
+<div id="t1j_18" class="t s2_18">131 </div>
+<div id="t1k_18" class="t s2_18">823.0972752 </div>
+<div id="t1l_18" class="t s2_18">2.402724759 </div>
+<div id="t1m_18" class="t s2_18">A3 </div>
+<div id="t1n_18" class="t s2_18">6.35 </div>
+<div id="t1o_18" class="t s2_18">927.1 </div>
+<div id="t1p_18" class="t s2_18">147.5525477 </div>
+<div id="t1q_18" class="t s2_18">148 </div>
+<div id="t1r_18" class="t s2_18">929.9114255 </div>
+<div id="t1s_18" class="t s2_18">2.811425463 </div>
+<div id="t1t_18" class="t s2_18">B3 </div>
+<div id="t1u_18" class="t s2_18">6.35 </div>
+<div id="t1v_18" class="t s2_18">1041.4 </div>
+<div id="t1w_18" class="t s2_18">165.7439577 </div>
+<div id="t1x_18" class="t s2_18">166 </div>
+<div id="t1y_18" class="t s2_18">1043.008761 </div>
+<div id="t1z_18" class="t s2_18">1.608760992 </div>
+<div id="t20_18" class="t s2_18">C4 </div>
+<div id="t21_18" class="t s2_18">6.35 </div>
+<div id="t22_18" class="t s2_18">1104.9 </div>
+<div id="t23_18" class="t s2_18">175.8502966 </div>
+<div id="t24_18" class="t s2_18">176 </div>
+<div id="t25_18" class="t s2_18">1105.840614 </div>
+<div id="t26_18" class="t s2_18">0.940614064 </div>
+<div id="t27_18" class="t s3_18">Chart 5.4: A chart including the ideal circumference (number of holes * diameter of tube * 2) and </div>
+<div id="t28_18" class="t s3_18">the edited circumference (2 * pi * the rounded radius). </div>
+<div id="t29_18" class="t s3_18">The absolute error is at most 3 mm. </div>
+<div id="t2a_18" class="t s3_18">This </div>
+<div id="t2b_18" class="t s3_18">error shouldn’t affect pitch (the frequency) since the frequency was calculated independent of </div>
+<div id="t2c_18" class="t s3_18">radius. </div>
+<div id="t2d_18" class="t s2_18">Using the rounded radius and the number of holes, I created the disc in </div>
+<div id="t2e_18" class="t s3_18">SolidWorks</div>
+<div id="t2f_18" class="t s2_18">and laser cut </div>
+<div id="t2g_18" class="t s2_18">it onto 3 mm thick pink plastic.  </div>
+<div id="t2h_18" class="t s2_18">If the sound from the hydraulophone had been louder, I would have used a sound probe to find </div>
+<div id="t2i_18" class="t s2_18">the frequencies of the different notes and then graphed the note versus the difference in calculated </div>
+<div id="t2j_18" class="t s2_18">and actual frequency. </div>
+<div id="t2k_18" class="t s2_18">If there were some correlation, I would correct the difference in my next </div>
+<div id="t2l_18" class="t s2_18">model. </div>
+<div id="t2m_18" class="t s2_18">I ended up not spinning the motor at 14 volts (the intended voltage to get 3 rps) because the sound </div>
+<div id="t2n_18" class="t s2_18">of the electric motor would over power the sound of the hydraulophone and the disc was in tune </div>
+<div id="t2o_18" class="t s2_18">with itself so it didn’t actually matter which speed I spun the disc at. </div>
+<div id="t2p_18" class="t s2_18">I ended up playing “Mary </div>
+<div id="t2q_18" class="t s2_18">Had A Little Lamb” [16] with water, which sounded audible and correct. </div>
+<div id="t2r_18" class="t s2_18">The volume of the sound was proportional to the amount of water displaced [17] though the </div>
+<div id="t2s_18" class="t s2_18">sound difference is very slight. </div>
+<div id="t2t_18" class="t s2_18">The timbre of the sound was overall very fuzzy and high. </div>
+<div id="t2u_18" class="t s2_18">The </div>
+<div id="t2v_18" class="t s2_18">hydraulophone worked very well and clearly with air, but was much more interesting and fun </div>
+<div id="t2w_18" class="t s2_18">with water. </div>
+<div id="t2x_18" class="t s2_18">If I had more time, I would have loved to run a statistical test to see if there was statistically </div>
+<div id="t2y_18" class="t s2_18">different frequencies produced using different temperatures of water. </div>
+<div id="t2z_18" class="t s4_18">VII. Conclusion </div>
+<div id="t30_18" class="t s2_18">When running the hydraulophone, pressing down on a given note at different distance (meaning </div>
+<div id="t31_18" class="t s2_18">one’s finger was closer or farther from the hole) changed the water pressure in a way one could </div>
+<div id="t32_18" class="t s2_18">visually see. </div>
+<div id="t33_18" class="t s2_18">Unfortunately, the volume of each note produced wasn’t very loud which was </div>
+<div id="t34_18" class="t s2_18">partially due to the racket the motor was making which drowned out all other sounds.  </div>
+<div id="t35_18" class="t s2_18">Additionally, it was difficult to play chords since the water pressure over powered the disc and </div>
+<div id="t36_18" class="t s2_18">would change the speed. </div>
+<div id="t37_18" class="t s2_18">To combat this issue, I would make a disc that had more inertia. </div>
+<div id="t38_18" class="t s2_18">Potential fixes for the problem include remaking the plastic piece that binds the spinning disc and </div>
+<div id="t39_18" class="t s2_18">motor so there is a better connection and less wobble. </div>
+<div id="t3a_18" class="t s2_18">Using metal instead of plastic for the </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg18Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg18"><object width="935" height="1210" data="18/18.svg" type="image/svg+xml" id="pdf18" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f18 = [['t1_18',271],['t4_18',209],['t9_18',258],['ta_18',328],['td_18',236],['tj_18',373],['tl_18',288],['t27_18',2638],['t28_18',1472],['t29_18',958],['t2b_18',2523],['t2d_18',1903],['t2f_18',338],['t2g_18',858],['t2h_18',2546],['t2i_18',2632],['t2j_18',576],['t2k_18',1947],['t2m_18',2637],['t2n_18',2579],['t2o_18',1835],['t2p_18',694],['t2q_18',1959],['t2r_18',2469],['t2s_18',830],['t2t_18',1540],['t2v_18',2509],['t2w_18',300],['t2x_18',2468],['t2y_18',1853],['t2z_18',454],['t30_18',2580],['t31_18',2562],['t32_18',331],['t33_18',2092],['t34_18',2312],['t35_18',2546],['t36_18',660],['t37_18',1720],['t38_18',2621],['t39_18',1440],['t3a_18',993]];
+function load18(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f18);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 119;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_18");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

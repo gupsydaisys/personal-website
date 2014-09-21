@@ -1,0 +1,337 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>methodvsanswer Page11</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(13,11,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load11();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_11{left:124px;top:108px;}
+#t2_11{left:124px;top:129px;}
+#t3_11{left:124px;top:151px;}
+#t4_11{left:124px;top:171px;}
+#t5_11{left:124px;top:193px;}
+#t6_11{left:124px;top:214px;}
+#t7_11{left:124px;top:235px;}
+#t8_11{left:124px;top:256px;}
+#t9_11{left:124px;top:277px;}
+#ta_11{left:124px;top:298px;}
+#tb_11{left:124px;top:319px;}
+#tc_11{left:124px;top:340px;}
+#td_11{left:124px;top:361px;}
+#te_11{left:124px;top:382px;}
+#tf_11{left:124px;top:404px;}
+#tg_11{left:124px;top:424px;}
+#th_11{left:124px;top:446px;}
+#ti_11{left:124px;top:467px;}
+#tj_11{left:124px;top:488px;}
+#tk_11{left:120px;top:509px;}
+#tl_11{left:124px;top:530px;}
+#tm_11{left:124px;top:551px;}
+#tn_11{left:124px;top:572px;}
+#to_11{left:124px;top:593px;}
+#tp_11{left:124px;top:614px;}
+#tq_11{left:124px;top:635px;}
+#tr_11{left:124px;top:657px;}
+#ts_11{left:124px;top:677px;}
+#tt_11{left:124px;top:699px;}
+#tu_11{left:124px;top:720px;}
+#tv_11{left:124px;top:741px;}
+#tw_11{left:124px;top:762px;}
+#tx_11{left:124px;top:783px;}
+#ty_11{left:124px;top:804px;}
+#tz_11{left:124px;top:825px;}
+#t10_11{left:124px;top:846px;}
+#t11_11{left:124px;top:867px;}
+#t12_11{left:124px;top:888px;}
+#t13_11{left:124px;top:910px;}
+#t14_11{left:124px;top:930px;}
+#t15_11{left:124px;top:952px;}
+#t16_11{left:124px;top:973px;}
+#t17_11{left:124px;top:994px;}
+#t18_11{left:124px;top:1015px;}
+#t19_11{left:124px;top:1036px;}
+#t1a_11{left:124px;top:1057px;}
+
+.s1_11{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: CLSUEP-TimesNewRomanPSMT11;
+	color: rgb(0,0,0);
+}
+
+.s2_11{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: TJJFGK-TimesNewRomanPS-BoldIt11;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: TJJFGK-TimesNewRomanPS-BoldIt11;
+	src: url("11/fonts/TJJFGK-TimesNewRomanPS-BoldIt.eot");
+	src: url("11/fonts/TJJFGK-TimesNewRomanPS-BoldIt.eot?#iefix") format("embedded-opentype"),
+		url("11/fonts/TJJFGK-TimesNewRomanPS-BoldIt.woff") format("woff");
+}
+
+@font-face {
+	font-family: CLSUEP-TimesNewRomanPSMT11;
+	src: url("11/fonts/CLSUEP-TimesNewRomanPSMT.eot");
+	src: url("11/fonts/CLSUEP-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("11/fonts/CLSUEP-TimesNewRomanPSMT.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_11" class="t s1_11">f 10 no </div>
+<div id="t2_11" class="t s1_11">m 10 yes </div>
+<div id="t3_11" class="t s1_11">f 9 no </div>
+<div id="t4_11" class="t s1_11">m 9 no </div>
+<div id="t5_11" class="t s1_11">f 9 no </div>
+<div id="t6_11" class="t s1_11">m 12 yes </div>
+<div id="t7_11" class="t s1_11">m 10 no </div>
+<div id="t8_11" class="t s1_11">m 10 yes </div>
+<div id="t9_11" class="t s1_11">m 11 no </div>
+<div id="ta_11" class="t s1_11">m 12 yes </div>
+<div id="tb_11" class="t s1_11">m 11 yes </div>
+<div id="tc_11" class="t s1_11">m 9 no </div>
+<div id="td_11" class="t s1_11">m 10 no </div>
+<div id="te_11" class="t s1_11">m 11 no </div>
+<div id="tf_11" class="t s1_11">f 12 yes </div>
+<div id="tg_11" class="t s1_11">f 10 yes </div>
+<div id="th_11" class="t s1_11">f 12 no </div>
+<div id="ti_11" class="t s1_11">f 9 no </div>
+<div id="tj_11" class="t s1_11">f 11 no </div>
+<div id="tk_11" class="t s2_11">survey monkey  </div>
+<div id="tl_11" class="t s1_11">m 11 no </div>
+<div id="tm_11" class="t s1_11">f 12 no </div>
+<div id="tn_11" class="t s1_11">m 12 yes </div>
+<div id="to_11" class="t s1_11">f 11 no </div>
+<div id="tp_11" class="t s1_11">f 11 no   </div>
+<div id="tq_11" class="t s1_11">f 9 no </div>
+<div id="tr_11" class="t s1_11">m 9 no </div>
+<div id="ts_11" class="t s1_11">m 12 yes </div>
+<div id="tt_11" class="t s1_11">m 10 no </div>
+<div id="tu_11" class="t s1_11">f 11 no </div>
+<div id="tv_11" class="t s1_11">f 10 no </div>
+<div id="tw_11" class="t s1_11">m 12 yes </div>
+<div id="tx_11" class="t s1_11">m 10 no </div>
+<div id="ty_11" class="t s1_11">m 9 no </div>
+<div id="tz_11" class="t s1_11">f 10 no </div>
+<div id="t10_11" class="t s1_11">m 12 yes </div>
+<div id="t11_11" class="t s1_11">m 9 no </div>
+<div id="t12_11" class="t s1_11">f 10 no </div>
+<div id="t13_11" class="t s1_11">f 9 no </div>
+<div id="t14_11" class="t s1_11">m 12 no </div>
+<div id="t15_11" class="t s1_11">f 10 no </div>
+<div id="t16_11" class="t s1_11">f 11 no </div>
+<div id="t17_11" class="t s1_11">f 10 no </div>
+<div id="t18_11" class="t s1_11">f 9 no </div>
+<div id="t19_11" class="t s1_11">m 9 yes </div>
+<div id="t1a_11" class="t s1_11">f 12 no </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg11Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg11"><object width="935" height="1210" data="11/11.svg" type="image/svg+xml" id="pdf11" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f11 = [['t1_11',207],['t2_11',264],['t3_11',171],['t4_11',203],['t5_11',171],['t6_11',264],['t7_11',240],['t8_11',264],['t9_11',240],['ta_11',264],['tb_11',264],['tc_11',203],['td_11',240],['te_11',240],['tf_11',232],['tg_11',232],['th_11',207],['ti_11',171],['tj_11',207],['tk_11',468],['tl_11',240],['tm_11',207],['tn_11',264],['to_11',207],['tp_11',244],['tq_11',171],['tr_11',203],['ts_11',264],['tt_11',240],['tu_11',207],['tv_11',207],['tw_11',264],['tx_11',240],['ty_11',203],['tz_11',207],['t10_11',264],['t11_11',203],['t12_11',207],['t13_11',171],['t14_11',240],['t15_11',207],['t16_11',207],['t17_11',207],['t18_11',171],['t19_11',228],['t1a_11',207]];
+function load11(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f11);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 47;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_11");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

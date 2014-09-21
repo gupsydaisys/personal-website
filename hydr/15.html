@@ -1,0 +1,313 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page15</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,15,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load15();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_15{left:730px;top:54px;}
+#t2_15{left:138px;top:535px;}
+#t3_15{left:231px;top:535px;}
+#t4_15{left:515px;top:535px;}
+#t5_15{left:138px;top:554px;}
+#t6_15{left:138px;top:573px;}
+#t7_15{left:138px;top:612px;}
+#t8_15{left:138px;top:631px;}
+#t9_15{left:138px;top:651px;}
+#ta_15{left:138px;top:670px;}
+#tb_15{left:441px;top:670px;}
+#tc_15{left:138px;top:690px;}
+#td_15{left:138px;top:929px;}
+#te_15{left:138px;top:949px;}
+#tf_15{left:138px;top:987px;}
+#tg_15{left:732px;top:987px;}
+#th_15{left:138px;top:1007px;}
+#ti_15{left:451px;top:1007px;}
+#tj_15{left:138px;top:1026px;}
+#tk_15{left:740px;top:1026px;}
+#tl_15{left:138px;top:1045px;}
+
+.s1_15{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT15;
+	color: rgb(0,0,0);
+}
+
+.s3_15{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: QVYMEI-Times-Bold15;
+	color: rgb(0,0,0);
+}
+
+.s4_15{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman15;
+	color: rgb(0,0,0);
+}
+
+.s2_15{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: GZBYMC-Times-Italic15;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT15;
+	src: url("15/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("15/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("15/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman15;
+	src: url("15/fonts/SNLSFN-Times-Roman.eot");
+	src: url("15/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("15/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: GZBYMC-Times-Italic15;
+	src: url("15/fonts/GZBYMC-Times-Italic.eot");
+	src: url("15/fonts/GZBYMC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("15/fonts/GZBYMC-Times-Italic.woff") format("woff");
+}
+
+@font-face {
+	font-family: QVYMEI-Times-Bold15;
+	src: url("15/fonts/QVYMEI-Times-Bold.eot");
+	src: url("15/fonts/QVYMEI-Times-Bold.eot?#iefix") format("embedded-opentype"),
+		url("15/fonts/QVYMEI-Times-Bold.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_15" class="t s1_15">Gupta 15 </div>
+<div id="t2_15" class="t s2_15">Figure 4.12: </div>
+<div id="t3_15" class="t s2_15">The picture shows a close up on the side. </div>
+<div id="t4_15" class="t s2_15">It shows how close the plastic tubes were </div>
+<div id="t5_15" class="t s2_15">to the plastic spinning disc. Electric tape is cushioning the disc so that it has a more tight fit and </div>
+<div id="t6_15" class="t s2_15">doesn’t wobble. </div>
+<div id="t7_15" class="t s3_15">V. Results </div>
+<div id="t8_15" class="t s2_15">Motor at a Constant Speed </div>
+<div id="t9_15" class="t s4_15">In order to figure out whether the electric motor I used could run at a constant speed, I attached a </div>
+<div id="ta_15" class="t s4_15">wood piece with masking tape to the motor. </div>
+<div id="tb_15" class="t s4_15">And used a photo gate to calculate how frequently </div>
+<div id="tc_15" class="t s4_15">the masking tape passed by the sensor. </div>
+<div id="td_15" class="t s2_15">Graph 5.1: The velocity in meters per second of the motor at 20 volts versus time in seconds. </div>
+<div id="te_15" class="t s2_15">This is data outputted by the LabQuest. </div>
+<div id="tf_15" class="t s4_15">At 20 volts, the data points fluctuate between 2.635 m/s and 2.65 m/s (.015 difference). </div>
+<div id="tg_15" class="t s4_15">The </div>
+<div id="th_15" class="t s4_15">average velocity after 1 minute was 2.64 m/s. </div>
+<div id="ti_15" class="t s4_15">I calculated rotations per second by figuring out </div>
+<div id="tj_15" class="t s4_15">that the radius of the motor was .096 m and thus the circumference (2*pi*r) was .603 m. </div>
+<div id="tk_15" class="t s4_15">So in 1 </div>
+<div id="tl_15" class="t s4_15">second, the motor went 2.64 m and if each rotation is .603 meters than the motor did 4.3781 rps. </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg15Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg15"><object width="935" height="1210" data="15/15.svg" type="image/svg+xml" id="pdf15" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f15 = [['t1_15',271],['t2_15',338],['t3_15',1103],['t4_15',1107],['t5_15',2595],['t6_15',423],['t7_15',290],['t8_15',723],['t9_15',2605],['ta_15',1179],['tb_15',1350],['tc_15',1038],['td_15',2495],['te_15',1057],['tf_15',2344],['th_15',1222],['ti_15',1291],['tj_15',2374],['tk_15',190],['tl_15',2588]];
+function load15(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f15);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 22;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_15");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

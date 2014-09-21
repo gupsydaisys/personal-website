@@ -1,0 +1,356 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page3</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,3,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load3();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_3{left:739px;top:54px;}
+#t2_3{left:138px;top:109px;}
+#t3_3{left:138px;top:128px;}
+#t4_3{left:138px;top:147px;}
+#t5_3{left:212px;top:147px;}
+#t6_3{left:433px;top:147px;}
+#t7_3{left:138px;top:167px;}
+#t8_3{left:138px;top:206px;}
+#t9_3{left:765px;top:206px;}
+#ta_3{left:138px;top:225px;}
+#tb_3{left:558px;top:225px;}
+#tc_3{left:138px;top:244px;}
+#td_3{left:138px;top:264px;}
+#te_3{left:333px;top:264px;}
+#tf_3{left:138px;top:283px;}
+#tg_3{left:619px;top:283px;}
+#th_3{left:138px;top:302px;}
+#ti_3{left:406px;top:302px;}
+#tj_3{left:138px;top:322px;}
+#tk_3{left:138px;top:341px;}
+#tl_3{left:463px;top:341px;}
+#tm_3{left:138px;top:361px;}
+#tn_3{left:764px;top:361px;}
+#to_3{left:138px;top:380px;}
+#tp_3{left:138px;top:400px;}
+#tq_3{left:300px;top:400px;}
+#tr_3{left:138px;top:419px;}
+#ts_3{left:138px;top:439px;}
+#tt_3{left:138px;top:477px;}
+#tu_3{left:625px;top:477px;}
+#tv_3{left:138px;top:497px;}
+#tw_3{left:599px;top:497px;}
+#tx_3{left:138px;top:516px;}
+#ty_3{left:759px;top:516px;}
+#tz_3{left:138px;top:535px;}
+#t10_3{left:138px;top:555px;}
+#t11_3{left:348px;top:555px;}
+#t12_3{left:138px;top:574px;}
+#t13_3{left:138px;top:613px;}
+#t14_3{left:138px;top:632px;}
+#t15_3{left:657px;top:632px;}
+#t16_3{left:138px;top:652px;}
+#t17_3{left:570px;top:652px;}
+#t18_3{left:138px;top:671px;}
+#t19_3{left:648px;top:671px;}
+#t1a_3{left:138px;top:691px;}
+#t1b_3{left:138px;top:710px;}
+#t1c_3{left:337px;top:710px;}
+#t1d_3{left:138px;top:730px;}
+
+.s1_3{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT3;
+	color: rgb(0,0,0);
+}
+
+.s3_3{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: QVYMEI-Times-Bold3;
+	color: rgb(0,0,0);
+}
+
+.s2_3{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman3;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT3;
+	src: url("03/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("03/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("03/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman3;
+	src: url("03/fonts/SNLSFN-Times-Roman.eot");
+	src: url("03/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("03/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: QVYMEI-Times-Bold3;
+	src: url("03/fonts/QVYMEI-Times-Bold.eot");
+	src: url("03/fonts/QVYMEI-Times-Bold.eot?#iefix") format("embedded-opentype"),
+		url("03/fonts/QVYMEI-Times-Bold.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_3" class="t s1_3">Gupta 3 </div>
+<div id="t2_3" class="t s2_3">fluid and a couple other parameters to figure out which of an array of jets is being blocked. </div>
+<div id="t3_3" class="t s2_3">Similar analysis would be useful in any system involving hydraulic sound including plumbing or </div>
+<div id="t4_3" class="t s2_3">fuel lines. </div>
+<div id="t5_3" class="t s2_3">Technological advancements in </div>
+<div id="t6_3" class="t s2_3">“acoustic-based fluid flow analysis” would lead to </div>
+<div id="t7_3" class="t s2_3">more efficiency in those industries [10]. </div>
+<div id="t8_3" class="t s2_3">The design in itself is noteworthy for pushing beyond the normal limits of sound and music. </div>
+<div id="t9_3" class="t s2_3">Two </div>
+<div id="ta_3" class="t s2_3">instruments similar to hydraulophones are pianos and organs. </div>
+<div id="tb_3" class="t s2_3">All three instruments have </div>
+<div id="tc_3" class="t s2_3">keyboards with keys that are velocity sensitive meaning the volume of the note depends on how </div>
+<div id="td_3" class="t s2_3">hard or soft a note is struck. </div>
+<div id="te_3" class="t s2_3">With pianos, at whatever velocity you initially strike a key that note </div>
+<div id="tf_3" class="t s2_3">will start at that volume and then start decaying and becoming quieter. </div>
+<div id="tg_3" class="t s2_3">A pianist can’t change the </div>
+<div id="th_3" class="t s2_3">volume while the note is being played. </div>
+<div id="ti_3" class="t s2_3">Organs are slightly different in that in some constructions </div>
+<div id="tj_3" class="t s2_3">the notes don’t decay, meaning the note stays at one volume the entire time, but you again can’t </div>
+<div id="tk_3" class="t s2_3">change the volume of the note while playing it. </div>
+<div id="tl_3" class="t s2_3">With both instruments, the user is stuck with a </div>
+<div id="tm_3" class="t s2_3">volume after a key is initially struck and the sound will only be produced for a finite period. </div>
+<div id="tn_3" class="t s2_3">With </div>
+<div id="to_3" class="t s2_3">hydraulophones, notes have infinite key travel, and users have the ability to modify the volume of </div>
+<div id="tp_3" class="t s2_3">a note while playing it. </div>
+<div id="tq_3" class="t s2_3">Glass harmonicas have a similar ability but lack a keyboard. </div>
+<div id="tr_3" class="t s2_3">Hydraulophones are a unique entity with their velocity-sensing keyboard with keys that never </div>
+<div id="ts_3" class="t s2_3">bottom out and whose volume can be changed with the note is being played. </div>
+<div id="tt_3" class="t s2_3">One of the appealing aspects of the instrument is the visual component. </div>
+<div id="tu_3" class="t s2_3">It’s fascinating to be able </div>
+<div id="tv_3" class="t s2_3">to play music-using water, a durable and fun medium to work with. </div>
+<div id="tw_3" class="t s2_3">Also, it’s incredibly </div>
+<div id="tx_3" class="t s2_3">interesting to be able to see the quality of a sound change as the spray from the jet changes. </div>
+<div id="ty_3" class="t s2_3">Due </div>
+<div id="tz_3" class="t s2_3">to the build of the instrument, the spray from the jet is inversely proportional to the volume and </div>
+<div id="t10_3" class="t s2_3">timbre of the sound produced. </div>
+<div id="t11_3" class="t s2_3">Most instruments don’t have a visual demonstration of the quality </div>
+<div id="t12_3" class="t s2_3">of sound and in that way hydraulophones are revolutionizing the field of music. </div>
+<div id="t13_3" class="t s3_3">III. Theory of Operation </div>
+<div id="t14_3" class="t s2_3">On a hydraulophone, each jet is independent and represents a different note. </div>
+<div id="t15_3" class="t s2_3">This means that a </div>
+<div id="t16_3" class="t s2_3">user can block multiple jets at the same time and create chords. </div>
+<div id="t17_3" class="t s2_3">When a jet is not being blocked, </div>
+<div id="t18_3" class="t s2_3">the water from the hose goes directly from the hose up to the top jet outlet. </div>
+<div id="t19_3" class="t s2_3">Although there is a </div>
+<div id="t1a_3" class="t s2_3">side outlet connected to a spinning wheel, water doesn’t escape into the side due to the vacuum </div>
+<div id="t1b_3" class="t s2_3">made by the water going up. </div>
+<div id="t1c_3" class="t s2_3">The vacuum is created by the high velocity of the fluid coming out </div>
+<div id="t1d_3" class="t s2_3">which creates low pressure on the side, drawing a vacuum (Bernoulli’s Principle) [11]. </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg3Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg3"><object width="935" height="1210" data="03/3.svg" type="image/svg+xml" id="pdf3" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f3 = [['t1_3',234],['t2_3',2445],['t3_3',2604],['t4_3',263],['t5_3',848],['t6_3',1357],['t7_3',1073],['t8_3',2473],['ta_3',1648],['tb_3',709],['tc_3',2576],['td_3',747],['te_3',1824],['tf_3',1891],['tg_3',700],['th_3',1038],['ti_3',1548],['tj_3',2573],['tk_3',1267],['tl_3',1248],['tm_3',2469],['to_3',2628],['tp_3',617],['tq_3',1619],['tr_3',2519],['ts_3',2051],['tt_3',1918],['tu_3',678],['tv_3',1811],['tw_3',535],['tx_3',2451],['tz_3',2562],['t10_3',808],['t11_3',1771],['t12_3',2139],['t13_3',704],['t14_3',2042],['t15_3',470],['t16_3',1698],['t17_3',866],['t18_3',2006],['t19_3',511],['t1a_3',2557],['t1b_3',764],['t1c_3',1793],['t1d_3',2332]];
+function load3(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f3);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 50;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_3");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

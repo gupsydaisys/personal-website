@@ -1,0 +1,314 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page4</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,4,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load4();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_4{left:739px;top:54px;}
+#t2_4{left:138px;top:109px;}
+#t3_4{left:138px;top:128px;}
+#t4_4{left:239px;top:128px;}
+#t5_4{left:138px;top:147px;}
+#t6_4{left:406px;top:147px;}
+#t7_4{left:138px;top:167px;}
+#t8_4{left:138px;top:186px;}
+#t9_4{left:138px;top:206px;}
+#ta_4{left:138px;top:518px;}
+#tb_4{left:138px;top:537px;}
+#tc_4{left:138px;top:576px;}
+#td_4{left:483px;top:576px;}
+#te_4{left:138px;top:595px;}
+#tf_4{left:138px;top:615px;}
+#tg_4{left:686px;top:615px;}
+#th_4{left:138px;top:634px;}
+#ti_4{left:193px;top:673px;}
+#tj_4{left:358px;top:693px;}
+#tk_4{left:138px;top:945px;}
+#tl_4{left:138px;top:964px;}
+#tm_4{left:138px;top:1003px;}
+#tn_4{left:138px;top:1023px;}
+#to_4{left:301px;top:1023px;}
+#tp_4{left:138px;top:1042px;}
+#tq_4{left:595px;top:840px;}
+#tr_4{left:155px;top:825px;}
+#ts_4{left:443px;top:853px;}
+
+.s1_4{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT4;
+	color: rgb(0,0,0);
+}
+
+.s3_4{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: GZBYMC-Times-Italic4;
+	color: rgb(0,0,0);
+}
+
+.s2_4{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman4;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT4;
+	src: url("04/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("04/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("04/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman4;
+	src: url("04/fonts/SNLSFN-Times-Roman.eot");
+	src: url("04/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("04/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: GZBYMC-Times-Italic4;
+	src: url("04/fonts/GZBYMC-Times-Italic.eot");
+	src: url("04/fonts/GZBYMC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("04/fonts/GZBYMC-Times-Italic.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_4" class="t s1_4">Gupta 4 </div>
+<div id="t2_4" class="t s2_4">When a jet is blocked on a hydraulophone, the water is diverted to the side outlet, which goes to a </div>
+<div id="t3_4" class="t s2_4">spinning disc. </div>
+<div id="t4_4" class="t s2_4">The disc consists of circles of holes that are evenly spaced where each circle of </div>
+<div id="t5_4" class="t s2_4">holes corresponds to a specific jet/key. </div>
+<div id="t6_4" class="t s2_4">When the fluid is diverted to the spinning disc, depending </div>
+<div id="t7_4" class="t s2_4">on whether there is a hole or no hole, there is a compression zone (no hole) or rarefaction zone </div>
+<div id="t8_4" class="t s2_4">(hole). The result is a series of compressions and rarefactions that make up a sound wave of a </div>
+<div id="t9_4" class="t s2_4">particular frequency [2]. </div>
+<div id="ta_4" class="t s3_4">Figure 4.1: The diagram above shows the effect of blocking or not blocking a jet outlet on a </div>
+<div id="tb_4" class="t s3_4">hydraulophone [2]. </div>
+<div id="tc_4" class="t s2_4">Pitch in music is another word for frequency [13]. </div>
+<div id="td_4" class="t s2_4">The frequency of the sound wave produced by </div>
+<div id="te_4" class="t s2_4">a specific jet depends on how fast the disc is spinning, the radius that the given water jet hits the </div>
+<div id="tf_4" class="t s2_4">disc, and the distance from the center of two consecutive holes at a given radius. </div>
+<div id="tg_4" class="t s2_4">The equation </div>
+<div id="th_4" class="t s2_4">for frequency would be as follows: </div>
+<div id="ti_4" class="t s2_4">Frequency (Hz) = Radius (meters) * Angular Speed (radians per second)</div>
+<div id="tj_4" class="t s2_4">Distance Between Holes (meters) </div>
+<div id="tk_4" class="t s3_4">Figure 4.2: The diagram above shows the factors on the spinning disc that contribute to the pitch </div>
+<div id="tl_4" class="t s3_4">of a note being played on a hydraulophone. </div>
+<div id="tm_4" class="t s2_4">Timbre is the tone of the sound being played and equivalent to figuring out whether a sound is </div>
+<div id="tn_4" class="t s2_4">brighter or darker [14]. </div>
+<div id="to_4" class="t s2_4">Generally speaking using water to produce sound has more dark </div>
+<div id="tp_4" class="t s2_4">sounding qualities [2]. </div>
+<div id="tq_4" class="t s1_4">Angular Speed </div>
+<div id="tr_4" class="t s1_4">Distance Between Holes </div>
+<div id="ts_4" class="t s1_4">Radius </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg4Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg4"><object width="935" height="1210" data="04/4.svg" type="image/svg+xml" id="pdf4" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f4 = [['t1_4',234],['t2_4',2629],['t3_4',373],['t4_4',2125],['t5_4',1039],['t6_4',1556],['t7_4',2542],['t8_4',2511],['t9_4',653],['ta_4',2470],['tb_4',526],['tc_4',1345],['td_4',1247],['te_4',2582],['tf_4',2159],['tg_4',351],['th_4',938],['ti_4',1952],['tj_4',900],['tk_4',2618],['tl_4',1171],['tm_4',2537],['tn_4',618],['to_4',1726],['tp_4',602],['tq_4',438],['tr_4',718]];
+function load4(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f4);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 29;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_4");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

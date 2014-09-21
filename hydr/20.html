@@ -1,0 +1,354 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page20</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,20,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load20();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_20{left:730px;top:54px;}
+#t2_20{left:138px;top:109px;}
+#t3_20{left:138px;top:147px;}
+#t4_20{left:138px;top:167px;}
+#t5_20{left:438px;top:167px;}
+#t6_20{left:138px;top:206px;}
+#t7_20{left:138px;top:225px;}
+#t8_20{left:138px;top:244px;}
+#t9_20{left:138px;top:283px;}
+#ta_20{left:138px;top:302px;}
+#tb_20{left:138px;top:322px;}
+#tc_20{left:154px;top:322px;}
+#td_20{left:138px;top:361px;}
+#te_20{left:138px;top:380px;}
+#tf_20{left:138px;top:419px;}
+#tg_20{left:138px;top:439px;}
+#th_20{left:421px;top:439px;}
+#ti_20{left:138px;top:477px;}
+#tj_20{left:138px;top:497px;}
+#tk_20{left:476px;top:497px;}
+#tl_20{left:138px;top:535px;}
+#tm_20{left:138px;top:555px;}
+#tn_20{left:539px;top:555px;}
+#to_20{left:138px;top:594px;}
+#tp_20{left:138px;top:613px;}
+#tq_20{left:486px;top:613px;}
+#tr_20{left:138px;top:652px;}
+#ts_20{left:138px;top:691px;}
+#tt_20{left:138px;top:710px;}
+#tu_20{left:138px;top:749px;}
+#tv_20{left:138px;top:769px;}
+#tw_20{left:391px;top:769px;}
+#tx_20{left:138px;top:807px;}
+#ty_20{left:138px;top:826px;}
+#tz_20{left:615px;top:826px;}
+#t10_20{left:138px;top:846px;}
+#t11_20{left:138px;top:885px;}
+#t12_20{left:138px;top:904px;}
+#t13_20{left:391px;top:904px;}
+#t14_20{left:138px;top:943px;}
+#t15_20{left:138px;top:962px;}
+#t16_20{left:391px;top:962px;}
+#t17_20{left:138px;top:1001px;}
+#t18_20{left:138px;top:1021px;}
+#t19_20{left:530px;top:1021px;}
+#t1a_20{left:138px;top:1059px;}
+#t1b_20{left:138px;top:1079px;}
+#t1c_20{left:482px;top:1079px;}
+
+.s1_20{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT20;
+	color: rgb(0,0,0);
+}
+
+.s3_20{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman20;
+	color: rgb(0,0,0);
+}
+
+.s2_20{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: QVYMEI-Times-Bold20;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT20;
+	src: url("20/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("20/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("20/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman20;
+	src: url("20/fonts/SNLSFN-Times-Roman.eot");
+	src: url("20/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("20/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: QVYMEI-Times-Bold20;
+	src: url("20/fonts/QVYMEI-Times-Bold.eot");
+	src: url("20/fonts/QVYMEI-Times-Bold.eot?#iefix") format("embedded-opentype"),
+		url("20/fonts/QVYMEI-Times-Bold.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_20" class="t s1_20">Gupta 20 </div>
+<div id="t2_20" class="t s2_20">VII. Bibliography </div>
+<div id="t3_20" class="t s3_20">[10] “Hydraulophone,” 2010, Wikipedia, </div>
+<div id="t4_20" class="t s3_20"><a href="http://en.wikipedia.org/wiki/Hydraulophone" target="_blank">http://en.wikipedia.org/wiki/Hydraulophone</a> </div>
+<div id="t5_20" class="t s3_20">(accessed January 26, 2011). </div>
+<div id="t6_20" class="t s3_20">[12] Mark Post, Ryan Janzen, Steve Mann, “Hydraulophone Design Considerations: Absement, </div>
+<div id="t7_20" class="t s3_20">Displacement, and Velocity-Sensitive Music Keyboard in which each key is a Water Jet,” 2006, </div>
+<div id="t8_20" class="t s3_20">University of Toronto. </div>
+<div id="t9_20" class="t s3_20">[4] “MANN, STEVE,” 2004, McMaster University, </div>
+<div id="ta_20" class="t s3_20"><a href="http://web.archive.org/web/20071114072826/http://www.mcmaster.ca/ua/alumni/gallery/mann.ht" target="_blank">http://web.archive.org/web/20071114072826/http://www.mcmaster.ca/ua/alumni/gallery/mann.ht</a></div>
+<div id="tb_20" class="t s3_20">m</div>
+<div id="tc_20" class="t s3_20">(accessed January 26, 2010). </div>
+<div id="td_20" class="t s3_20">[1] James Meier, Ryan Janzen, Steve Mann, “The electric hydraulophone: A hyperacoustic </div>
+<div id="te_20" class="t s3_20">instrument with acoustic feedback,” 2007, University of Toronto. </div>
+<div id="tf_20" class="t s3_20">[7] “Water organ,” 2010, Wikipedia, </div>
+<div id="tg_20" class="t s3_20"><a href="http://en.wikipedia.org/wiki/Water_organ" target="_blank">http://en.wikipedia.org/wiki/Water_organ</a> </div>
+<div id="th_20" class="t s3_20">(accessed January 26, 2011). </div>
+<div id="ti_20" class="t s3_20">[5] Michael Lahanas, “Ancient Greek Inventions,” </div>
+<div id="tj_20" class="t s3_20"><a href="http://www.mlahanas.de/Greeks/InventionsK.htm" target="_blank">http://www.mlahanas.de/Greeks/InventionsK.htm</a> </div>
+<div id="tk_20" class="t s3_20">(accessed January 26, 2011). </div>
+<div id="tl_20" class="t s3_20">[6] “Music lesson on the Ontario Science Centre's South Fountain,” WearCam, </div>
+<div id="tm_20" class="t s3_20">http://wearcam.org/oscfuntain/southnessie_lesson_twinkle/</div>
+<div id="tn_20" class="t s3_20">(accessed January 26, 2011). </div>
+<div id="to_20" class="t s3_20">[9] “Woodwater (hydraulic) hyperinstrument,” 2007, </div>
+<div id="tp_20" class="t s3_20"><a href="http://www.youtube.com/watch?v=Hcb5bf_3nWM" target="_blank">http://www.youtube.com/watch?v=Hcb5bf_3nWM</a></div>
+<div id="tq_20" class="t s3_20">(accessed January 26, 2011). </div>
+<div id="tr_20" class="t s3_20">[7] “Fluid Melodies,” February 2008, WaterShapes. </div>
+<div id="ts_20" class="t s3_20">[3] Ryan Janzen, Steven Mann, “Arrays of water jets as user interfaces: Detection and estimation </div>
+<div id="tt_20" class="t s3_20">of flow by listening to turbulence signatures using hydrophones,” 2007, University of Toronto. </div>
+<div id="tu_20" class="t s3_20">[8] Catherine Schmidt-Jones, “Frequency, Wavelength, and Pitch,” 2010, Connections, </div>
+<div id="tv_20" class="t s3_20">http://cnx.org/content/m11060/latest/</div>
+<div id="tw_20" class="t s3_20">(accessed January 26, 2010). </div>
+<div id="tx_20" class="t s3_20">[13] “Bernoulli's Principle,” US Centennial of Flight Commission, </div>
+<div id="ty_20" class="t s3_20"><a href="http://www.centennialofflight.gov/essay/Dictionary/bernoulli/DI9.htm" target="_blank">http://www.centennialofflight.gov/essay/Dictionary/bernoulli/DI9.htm</a></div>
+<div id="tz_20" class="t s3_20">(accessed January 26, </div>
+<div id="t10_20" class="t s3_20">2010). </div>
+<div id="t11_20" class="t s3_20">[11] Catherine Schmidt-Jones, “Timbre: The Color of Music,” 2010, Connections, </div>
+<div id="t12_20" class="t s3_20">http://cnx.org/content/m11059/latest/ </div>
+<div id="t13_20" class="t s3_20">(accessed January 26, 2010). </div>
+<div id="t14_20" class="t s3_20">[14] Glenn Elert, “Viscosity,” 2010, Physics, </div>
+<div id="t15_20" class="t s3_20">http://cnx.org/content/m11059/latest/ </div>
+<div id="t16_20" class="t s3_20">(accessed January 26, 2010). </div>
+<div id="t17_20" class="t s3_20">[15] “Embouchure,” Merriam Webster, </div>
+<div id="t18_20" class="t s3_20"><a href="http://www.merriam-webster.com/dictionary/embouchure" target="_blank">http://www.merriam-webster.com/dictionary/embouchure</a></div>
+<div id="t19_20" class="t s3_20">(accessed January 26, 2010). </div>
+<div id="t1a_20" class="t s3_20">[16] “Mary Had A Little Lamb - Hydraulophone,” 2011, </div>
+<div id="t1b_20" class="t s3_20"><a href="http://www.youtube.com/watch?v=_XUhH2ZIoRI" target="_blank">http://www.youtube.com/watch?v=_XUhH2ZIoRI</a></div>
+<div id="t1c_20" class="t s3_20">(accessed May 24, 2011). </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg20Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg20"><object width="935" height="1210" data="20/20.svg" type="image/svg+xml" id="pdf20" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f20 = [['t1_20',271],['t2_20',510],['t3_20',1102],['t5_20',774],['t6_20',2572],['t7_20',2582],['t8_20',605],['t9_20',1397],['tc_20',774],['td_20',2442],['te_20',1757],['tf_20',985],['th_20',772],['ti_20',1359],['tk_20',774],['tl_20',2123],['tn_20',772],['to_20',1425],['tq_20',774],['tr_20',1394],['ts_20',2607],['tt_20',2550],['tu_20',2343],['tw_20',772],['tx_20',1791],['tz_20',585],['t11_20',2214],['t13_20',772],['t14_20',1210],['t16_20',772],['t17_20',1055],['t19_20',774],['t1a_20',1522],['t1c_20',687]];
+function load20(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f20);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 49;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_20");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

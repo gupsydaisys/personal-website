@@ -1,0 +1,406 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page17</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,17,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load17();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_17{left:730px;top:54px;}
+#t2_17{left:138px;top:109px;}
+#t3_17{left:194px;top:109px;}
+#t4_17{left:138px;top:128px;}
+#t5_17{left:271px;top:167px;}
+#t6_17{left:138px;top:206px;}
+#t7_17{left:138px;top:244px;}
+#t8_17{left:138px;top:264px;}
+#t9_17{left:138px;top:283px;}
+#ta_17{left:217px;top:283px;}
+#tb_17{left:138px;top:302px;}
+#tc_17{left:138px;top:400px;}
+#td_17{left:216px;top:362px;}
+#te_17{left:216px;top:381px;}
+#tf_17{left:216px;top:400px;}
+#tg_17{left:334px;top:381px;}
+#th_17{left:334px;top:400px;}
+#ti_17{left:411px;top:381px;}
+#tj_17{left:411px;top:400px;}
+#tk_17{left:498px;top:362px;}
+#tl_17{left:498px;top:381px;}
+#tm_17{left:498px;top:400px;}
+#tn_17{left:138px;top:421px;}
+#to_17{left:279px;top:421px;}
+#tp_17{left:386px;top:421px;}
+#tq_17{left:465px;top:421px;}
+#tr_17{left:574px;top:421px;}
+#ts_17{left:138px;top:441px;}
+#tt_17{left:271px;top:441px;}
+#tu_17{left:386px;top:441px;}
+#tv_17{left:465px;top:441px;}
+#tw_17{left:574px;top:441px;}
+#tx_17{left:138px;top:461px;}
+#ty_17{left:271px;top:461px;}
+#tz_17{left:386px;top:461px;}
+#t10_17{left:465px;top:461px;}
+#t11_17{left:574px;top:461px;}
+#t12_17{left:138px;top:481px;}
+#t13_17{left:271px;top:481px;}
+#t14_17{left:386px;top:481px;}
+#t15_17{left:465px;top:481px;}
+#t16_17{left:574px;top:481px;}
+#t17_17{left:138px;top:501px;}
+#t18_17{left:292px;top:501px;}
+#t19_17{left:386px;top:501px;}
+#t1a_17{left:465px;top:501px;}
+#t1b_17{left:574px;top:501px;}
+#t1c_17{left:138px;top:521px;}
+#t1d_17{left:292px;top:521px;}
+#t1e_17{left:386px;top:521px;}
+#t1f_17{left:465px;top:521px;}
+#t1g_17{left:574px;top:521px;}
+#t1h_17{left:138px;top:542px;}
+#t1i_17{left:271px;top:542px;}
+#t1j_17{left:386px;top:542px;}
+#t1k_17{left:465px;top:542px;}
+#t1l_17{left:574px;top:542px;}
+#t1m_17{left:138px;top:562px;}
+#t1n_17{left:271px;top:562px;}
+#t1o_17{left:386px;top:562px;}
+#t1p_17{left:465px;top:562px;}
+#t1q_17{left:574px;top:562px;}
+#t1r_17{left:138px;top:582px;}
+#t1s_17{left:138px;top:601px;}
+#t1t_17{left:138px;top:640px;}
+#t1u_17{left:584px;top:640px;}
+#t1v_17{left:658px;top:640px;}
+#t1w_17{left:720px;top:640px;}
+#t1x_17{left:138px;top:660px;}
+#t1y_17{left:138px;top:679px;}
+#t1z_17{left:138px;top:698px;}
+#t20_17{left:202px;top:698px;}
+#t21_17{left:138px;top:737px;}
+#t22_17{left:138px;top:756px;}
+
+.s1_17{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT17;
+	color: rgb(0,0,0);
+}
+
+.s3_17{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: GZBYMC-Times-Italic17;
+	color: rgb(0,0,0);
+}
+
+.s2_17{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman17;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT17;
+	src: url("17/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("17/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("17/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman17;
+	src: url("17/fonts/SNLSFN-Times-Roman.eot");
+	src: url("17/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("17/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: GZBYMC-Times-Italic17;
+	src: url("17/fonts/GZBYMC-Times-Italic.eot");
+	src: url("17/fonts/GZBYMC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("17/fonts/GZBYMC-Times-Italic.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_17" class="t s1_17">Gupta 17 </div>
+<div id="t2_17" class="t s2_17">reason. </div>
+<div id="t3_17" class="t s2_17">With the rounded number of holes, I used the following equation to calculate frequency </div>
+<div id="t4_17" class="t s2_17">for both methods:</div>
+<div id="t5_17" class="t s2_17">Frequency (Hz) = Angular Speed (rps) * Number of Holes </div>
+<div id="t6_17" class="t s2_17">But the yielded frequencies in both methods were off by 4-8 Hz from the intended frequencies. </div>
+<div id="t7_17" class="t s2_17">The last method I tried was writing a program (Appendix B) that ran through different numbers of </div>
+<div id="t8_17" class="t s2_17">holes and rps numbers to determine whether a given frequency was within 1.5 Hz of the desired </div>
+<div id="t9_17" class="t s2_17">frequency. </div>
+<div id="ta_17" class="t s2_17">I ended up finding that 3 rps was the smallest rps that yielded non-decimal number of </div>
+<div id="tb_17" class="t s2_17">holes and within 1.5 Hz of every desired frequency. </div>
+<div id="tc_17" class="t s2_17">Note </div>
+<div id="td_17" class="t s2_17">Intended </div>
+<div id="te_17" class="t s2_17">Frequency </div>
+<div id="tf_17" class="t s2_17">(Hz): </div>
+<div id="tg_17" class="t s2_17">Speed </div>
+<div id="th_17" class="t s2_17">(RPS): </div>
+<div id="ti_17" class="t s2_17">Number </div>
+<div id="tj_17" class="t s2_17">of Holes: </div>
+<div id="tk_17" class="t s2_17">Calculated </div>
+<div id="tl_17" class="t s2_17">Frequency </div>
+<div id="tm_17" class="t s2_17">(Hz): </div>
+<div id="tn_17" class="t s2_17">C3 </div>
+<div id="to_17" class="t s2_17">130.8 </div>
+<div id="tp_17" class="t s2_17">3 </div>
+<div id="tq_17" class="t s2_17">44 </div>
+<div id="tr_17" class="t s2_17">132 </div>
+<div id="ts_17" class="t s2_17">D3 </div>
+<div id="tt_17" class="t s2_17">146.83 </div>
+<div id="tu_17" class="t s2_17">3 </div>
+<div id="tv_17" class="t s2_17">49 </div>
+<div id="tw_17" class="t s2_17">147 </div>
+<div id="tx_17" class="t s2_17">E3 </div>
+<div id="ty_17" class="t s2_17">164.81 </div>
+<div id="tz_17" class="t s2_17">3 </div>
+<div id="t10_17" class="t s2_17">55 </div>
+<div id="t11_17" class="t s2_17">165 </div>
+<div id="t12_17" class="t s2_17">F3 </div>
+<div id="t13_17" class="t s2_17">174.61 </div>
+<div id="t14_17" class="t s2_17">3 </div>
+<div id="t15_17" class="t s2_17">58 </div>
+<div id="t16_17" class="t s2_17">174 </div>
+<div id="t17_17" class="t s2_17">G3 </div>
+<div id="t18_17" class="t s2_17">196 </div>
+<div id="t19_17" class="t s2_17">3 </div>
+<div id="t1a_17" class="t s2_17">65 </div>
+<div id="t1b_17" class="t s2_17">195 </div>
+<div id="t1c_17" class="t s2_17">A3 </div>
+<div id="t1d_17" class="t s2_17">220 </div>
+<div id="t1e_17" class="t s2_17">3 </div>
+<div id="t1f_17" class="t s2_17">73 </div>
+<div id="t1g_17" class="t s2_17">219 </div>
+<div id="t1h_17" class="t s2_17">B3 </div>
+<div id="t1i_17" class="t s2_17">246.94 </div>
+<div id="t1j_17" class="t s2_17">3 </div>
+<div id="t1k_17" class="t s2_17">82 </div>
+<div id="t1l_17" class="t s2_17">246 </div>
+<div id="t1m_17" class="t s2_17">C4 </div>
+<div id="t1n_17" class="t s2_17">261.63 </div>
+<div id="t1o_17" class="t s2_17">3 </div>
+<div id="t1p_17" class="t s2_17">87 </div>
+<div id="t1q_17" class="t s2_17">261 </div>
+<div id="t1r_17" class="t s3_17">Chart 5.3: A chart of the intended frequency, speed, number of holes, and calculated frequency. </div>
+<div id="t1s_17" class="t s3_17">The calculate frequency is the speed multiplied by the number of holes (equation shown above).</div>
+<div id="t1t_17" class="t s2_17">This yielded the most accurate hole data out of all three methods. </div>
+<div id="t1u_17" class="t s2_17">And using </div>
+<div id="t1v_17" class="t s3_17">ToneGen</div>
+<div id="t1w_17" class="t s2_17">, I played </div>
+<div id="t1x_17" class="t s2_17">different songs that were off by 2 Hz and to the 35 people I asked (not randomly) 3 of them could </div>
+<div id="t1y_17" class="t s2_17">tell that it wasn’t the right pitch but all of them thought the songs still sounded fine and like the </div>
+<div id="t1z_17" class="t s2_17">original. </div>
+<div id="t20_17" class="t s2_17">I used “Mary had a Little Lamb” and “Twinkle Twinkle Little Star” as samples. </div>
+<div id="t21_17" class="t s2_17">In order to get the most consistent sound, I wanted the holes at each radius to be equally spaced </div>
+<div id="t22_17" class="t s2_17">and have the same distance as the diameter of the hole. </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg17Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg17"><object width="935" height="1210" data="17/17.svg" type="image/svg+xml" id="pdf17" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f17 = [['t1_17',271],['t3_17',2355],['t4_17',477],['t5_17',1573],['t6_17',2552],['t7_17',2638],['t8_17',2577],['ta_17',2298],['tb_17',1390],['tj_17',247],['t1r_17',2576],['t1s_17',2573],['t1t_17',1753],['t1u_17',278],['t1w_17',252],['t1x_17',2623],['t1y_17',2560],['t20_17',2145],['t21_17',2565],['t22_17',1475]];
+function load17(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f17);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 75;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_17");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

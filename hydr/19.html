@@ -1,0 +1,302 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page19</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,19,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load19();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_19{left:730px;top:54px;}
+#t2_19{left:138px;top:109px;}
+#t3_19{left:607px;top:109px;}
+#t4_19{left:138px;top:128px;}
+#t5_19{left:138px;top:147px;}
+#t6_19{left:142px;top:206px;}
+#t7_19{left:138px;top:225px;}
+#t8_19{left:138px;top:264px;}
+#t9_19{left:429px;top:264px;}
+#ta_19{left:138px;top:283px;}
+#tb_19{left:138px;top:302px;}
+#tc_19{left:138px;top:322px;}
+#td_19{left:196px;top:322px;}
+#te_19{left:336px;top:322px;}
+#tf_19{left:418px;top:322px;}
+#tg_19{left:138px;top:341px;}
+#th_19{left:247px;top:341px;}
+#ti_19{left:138px;top:361px;}
+#tj_19{left:296px;top:361px;}
+#tk_19{left:138px;top:380px;}
+#tl_19{left:423px;top:380px;}
+#tm_19{left:138px;top:400px;}
+
+.s1_19{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT19;
+	color: rgb(0,0,0);
+}
+
+.s3_19{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: GZBYMC-Times-Italic19;
+	color: rgb(0,0,0);
+}
+
+.s2_19{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman19;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT19;
+	src: url("19/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("19/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("19/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman19;
+	src: url("19/fonts/SNLSFN-Times-Roman.eot");
+	src: url("19/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("19/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: GZBYMC-Times-Italic19;
+	src: url("19/fonts/GZBYMC-Times-Italic.eot");
+	src: url("19/fonts/GZBYMC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("19/fonts/GZBYMC-Times-Italic.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_19" class="t s1_19">Gupta 19 </div>
+<div id="t2_19" class="t s2_19">spinning disc so that it is sturdier and heavier against the water flow. </div>
+<div id="t3_19" class="t s2_19">Also, having water flow </div>
+<div id="t4_19" class="t s2_19">from both directions at the disc so that the pressure from one side would be balanced by other </div>
+<div id="t5_19" class="t s2_19">side. </div>
+<div id="t6_19" class="t s2_19">In general, I think I should have used a microphone or amplifier so that the volume would be </div>
+<div id="t7_19" class="t s2_19">more audible.  </div>
+<div id="t8_19" class="t s2_19">Whiles my hydraulophone, I learned a lot. </div>
+<div id="t9_19" class="t s2_19">I feel like the project helped me realize I need to </div>
+<div id="ta_19" class="t s2_19">manage my time better on scientific projects and that while nothing is efficient and everything </div>
+<div id="tb_19" class="t s2_19">take 3 times as long as you expect, it’s important to keep going and not take extended breaks </div>
+<div id="tc_19" class="t s2_19">from it. </div>
+<div id="td_19" class="t s2_19">I learned how to use </div>
+<div id="te_19" class="t s3_19">SolidWorks</div>
+<div id="tf_19" class="t s2_19">extremely well and how to use almost every machine in </div>
+<div id="tg_19" class="t s2_19">the ASR room. </div>
+<div id="th_19" class="t s2_19">Coming from August 2010 where I didn’t even know how to strip a wire, I think </div>
+<div id="ti_19" class="t s2_19">I’ve come a long way. </div>
+<div id="tj_19" class="t s2_19">I really enjoyed the amount I learned about music theory and the role </div>
+<div id="tk_19" class="t s2_19">math and physics plays in that discipline. </div>
+<div id="tl_19" class="t s2_19">Overall I think the project was a success, and I </div>
+<div id="tm_19" class="t s2_19">appreciate how much I accomplished. </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg19Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg19"><object width="935" height="1210" data="19/19.svg" type="image/svg+xml" id="pdf19" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f19 = [['t1_19',271],['t2_19',1845],['t3_19',649],['t4_19',2517],['t6_19',2497],['t7_19',384],['t8_19',1133],['t9_19',1302],['ta_19',2534],['tb_19',2493],['tc_19',200],['td_19',544],['tf_19',1497],['tg_19',404],['th_19',2165],['ti_19',598],['tj_19',1860],['tk_19',1105],['tl_19',1253],['tm_19',1016]];
+function load19(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f19);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 23;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_19");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>

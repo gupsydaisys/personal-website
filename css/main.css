@@ -103,6 +103,127 @@ footer p {
 /**********************************
 PAGE: PROTFOLIO
 **********************************/
+#graphs {
+	width:384px;
+	height:288px;
+	content:url("graphs.jpg");
+	padding: 2.5%;
+	background-color: white;
+}
+
+#graphs:hover {
+	width:384px;
+	height:288px;
+	content:"hellomkljlkjlkjlkj";
+	text-align: center;
+	background:url("graphsH.jpg");
+	background-size:cover;
+}
+
+#gallery li div p {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 1.1em;
+	text-align: center;
+}
+
+#gallery li div #clickable{
+	font-family: 'Oswald', sans-serif;
+	font-weight: 300;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+#ios {
+	width:384px;
+	height:288px;
+	content:url("ios.jpg");
+	padding: 2.5%;
+	background-color: white;
+}
+
+#ios:hover {
+	width:384px;
+	height:288px;
+	content:"hellomkljlkjlkjlkj";
+	text-align: center;
+	background:url("iosH.jpg");
+	background-size:cover;
+}
+
+#mapR {
+	width:384px;
+	height:288px;
+	content:url("mapR.jpg");
+	padding: 2.5%;
+	background-color: white;
+}
+
+#mapR:hover {
+	width:384px;
+	height:288px;
+	content:"hellomkljlkjlkjlkj";
+	text-align: center;
+	background:url("mapRH.jpg");
+	background-size:cover;
+}
+
+#hydr {
+	width:384px;
+	height:288px;
+	content:url("hydr.jpg");
+	padding: 2.5%;
+	background-color: white;
+}
+
+#hydr:hover {
+	width:384px;
+	height:288px;
+	content:"hellomkljlkjlkjlkj";
+	text-align: center;
+	background:url("hydrH.jpg");
+	background-size:cover;
+}
+
+#jump61 {
+	width:384px;
+	height:288px;
+	content:url("jump61.jpg");
+	padding: 2.5%;
+	background-color: white;
+}
+
+#jump61:hover {
+	width:384px;
+	height:288px;
+	content:"hellomkljlkjlkjlkj";
+	text-align: center;
+	background:url("jump61H.jpg");
+	background-size:cover;
+}
+
+#stats {
+	width:384px;
+	height:288px;
+	content:url("stats.jpg");
+	padding: 2.5%;
+	background-color: white;
+}
+
+#stats:hover {
+	width:384px;
+	height:288px;
+	content:"hellomkljlkjlkjlkj";
+	text-align: center;
+	background:url("statsH.jpg");
+	background-size:cover;
+}
+
+#gallery li div {
+	float: left;
+	height: auto;
+}
+
 #gallery {
 	margin: 0;
 	padding: 0;
@@ -112,29 +233,9 @@ PAGE: PROTFOLIO
 }
 
 #gallery li {
-	float: left;
-/*	width: 100%;
-*/	margin: 2.5%;
-/*	background-color: white;
-*/	/*color: #bdc3c7;*/
+	display:inline-block;
+	margin: 4% 5% ;
 }
-
-#gallery li img {
-	float: left;
-	padding: 2.5%;
-	height: auto;
-	background-color: white;
-/*	color: #bdc3c7;
-*/}
-
-
-/*#gallery li a p {
-	margin: 0;
-	padding: 5%;
-	font-size: 0.75em;
-	color: #bdc3c7;
-}*/
-
 
 /**********************************
 PAGE: ABOUT
@@ -250,7 +351,8 @@ a {
 }
 
 nav {
-	background-color: #393535;
+	/*background-color: #393535;*/
+	background-color: rgba(0,0,0,0.8);
 }
 
 section {
@@ -282,4 +384,13 @@ nav a, nav a:visited {
 nav a.selected, nav a:hover, nav a:focus, nav a:active {
 	/*color: #fff;*/
 	text-decoration: underline;
+}
+nav #selected {
+	font-size: 2.7em;
+/*	text-decoration: underline;
+*/}
+
+/* show porfolio links as blue */
+#gallery li div p a {
+	color: blue;
 }

@@ -1,0 +1,431 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>FinalGupta_2 Page22</title>
+<link rel="stylesheet" type="text/css" href="assets/IDRViewer.css">
+<script type="text/javascript">
+var extLoaded = false;
+var intLoaded = false;
+function idrLoad() {
+	idrLoaded = true;
+	var heights = new Array(200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200);
+	IDRViewer.makeNavBar(25,22,935,1210,0,heights);
+}
+</script>
+<script src="assets/IDRViewer.js" type="text/javascript"></script>
+</head>
+
+<!-- Background pattern courtesy of http://subtlepatterns.com/grey-washed-wall/ -->
+<body style="background:url('assets/bg.png') repeat scroll 0 0 transparent;">
+
+<div id="left">
+<div id="leftNav">
+	<div id="btnThumbnails" onclick="IDRViewer.toggleOutlines(false)" title="Thumbnails" class="navBtn"></div>
+	<div id="btnOutlines" onclick="IDRViewer.toggleOutlines(true)" title="Bookmarks" class="navBtn"></div>
+</div>
+<div id="leftContent">
+	<div id="thumbnailPanel"></div>
+	<div id="outlinePanel"></div>
+</div>
+</div>
+
+<div id="main">
+
+<div id="mainNav">
+	<div id="btnSideToggle" onclick="IDRViewer.toggleThumbnails();" class="navBtn"><div title="Sidebar"></div></div>
+	
+	<div id="btnPrev" title="Previous Page" onclick="IDRViewer.prev()" class="navBtn"></div>
+	<select id="goBtn" onchange="IDRViewer.goToPage(0)">
+
+	</select>
+	<span id="pgCount"></span>
+	<div id="btnNext" title="Next Page" onclick="IDRViewer.next()" class="navBtn"></div>
+	
+	<div id="btnSelect" title="Select" onclick="IDRViewer.setSelectMode(0)" class="navBtn"></div>
+	<div id="btnMove" title="Pan" onclick="IDRViewer.setSelectMode(1)" class="navBtn"></div>
+
+	<div id="btnZoomOut" title="Zoom Out" onclick="IDRViewer.zoomOut()" class="navBtn"></div>
+	<select id="zoomBtn" onchange="IDRViewer.zoomUpdate()">
+		<option value="0">100%</option>
+		<option value="1">100% (Reset)</option>
+		<option value="2">Fit Width</option>
+		<option value="3">Fit Height</option>
+		<option value="4">Fit Page</option>
+
+	</select>
+	<div id="btnZoomIn" title="Zoom In" onclick="IDRViewer.zoomIn()" class="navBtn"></div>
+	<div id="btnFullscreen" title="Fullscreen" onclick="IDRViewer.toggleFullScreen();" class="navBtn closed"></div>
+</div>
+
+<div id="mainContent">
+
+<div id="contentContainer">
+
+
+
+<div id="jpedal" style="position:relative; width: 935px; height: 1210px; overflow: hidden; margin: 0 auto; box-shadow: 0 2px 6px rgba(100, 100, 100, 0.5);">
+
+<!-- Begin shared CSS values -->
+<style type="text/css" >
+.t {
+	position: absolute;
+	-webkit-transform-origin: top left;
+	-moz-transform-origin: top left;
+	-o-transform-origin: top left;
+	-ms-transform-origin: top left;
+	-webkit-transform: scale(0.25);
+	-moz-transform: scale(0.25);
+	-o-transform: scale(0.25);
+	-ms-transform: scale(0.25);
+	z-index: 2;
+	position:absolute;
+	white-space:nowrap;
+	overflow:visible;
+}
+</style>
+<!-- End shared CSS values -->
+
+<!-- Begin shared JS -->
+<script type="text/javascript">
+
+// Ensure that we're not replacing any onload events
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+addLoadEvent(function(){load22();});
+
+function adjustWordSpacing(widths) {
+    var i, allLinesDone = false;
+    var isDone = [];
+    var currentSpacing = [];
+    var elements = [];
+    
+    // Initialise arrays
+    for (i = 0; i < widths.length; i++) {
+        elements[i] = document.getElementById(widths[i][0]);
+        if (isIE) widths[i][1] = widths[i][1] * 4;
+        if (elements[i].offsetWidth < widths[i][1]) {
+            currentSpacing[i] = Math.floor((widths[i][1] - elements[i].offsetWidth) / elements[i].innerHTML.match(/\s.|&nbsp;./g).length);//min
+            if (isIE) currentSpacing[i] = Math.floor(currentSpacing[i] / 4);
+            isDone[i] = false;
+        } else {
+            currentSpacing[i] = 1;//too long
+            isDone[i] = true;
+        }
+    }
+    
+    while (!allLinesDone) {
+        // Add each adjustment to the render queue without forcing a render
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i]) {
+                elements[i].style.wordSpacing = currentSpacing[i] + 'px';
+            }            
+        }
+        
+        allLinesDone = true;
+        // If elements still need to be wider, add 1 to the word spacing
+        for (i = 0; i < widths.length; i++) {
+            if (!isDone[i] && currentSpacing[i] < 160) {
+                if (elements[i].offsetWidth >= widths[i][1]) {
+                    isDone[i] = true;
+                } else {
+                    currentSpacing[i]++;
+                    allLinesDone = false;
+                }
+            }
+        }
+    }
+    
+    for (i = 0; i < widths.length; i++) {
+        elements[i].style.wordSpacing = (currentSpacing[i] - 1) + 'px';
+    }
+}
+
+</script>
+<!-- End shared JS -->
+
+
+<!-- Begin inline CSS -->
+<style type="text/css" >
+
+#t1_22{left:730px;top:54px;}
+#t2_22{left:138px;top:109px;}
+#t3_22{left:138px;top:128px;}
+#t4_22{left:138px;top:168px;}
+#t5_22{left:307px;top:168px;}
+#t6_22{left:476px;top:168px;}
+#t7_22{left:645px;top:168px;}
+#t8_22{left:138px;top:188px;}
+#t9_22{left:307px;top:188px;}
+#ta_22{left:307px;top:207px;}
+#tb_22{left:476px;top:188px;}
+#tc_22{left:645px;top:188px;}
+#td_22{left:138px;top:227px;}
+#te_22{left:138px;top:247px;}
+#tf_22{left:307px;top:227px;}
+#tg_22{left:307px;top:247px;}
+#th_22{left:307px;top:266px;}
+#ti_22{left:476px;top:227px;}
+#tj_22{left:645px;top:227px;}
+#tk_22{left:138px;top:286px;}
+#tl_22{left:138px;top:306px;}
+#tm_22{left:307px;top:286px;}
+#tn_22{left:307px;top:306px;}
+#to_22{left:476px;top:286px;}
+#tp_22{left:645px;top:286px;}
+#tq_22{left:138px;top:326px;}
+#tr_22{left:138px;top:345px;}
+#ts_22{left:138px;top:364px;}
+#tt_22{left:307px;top:326px;}
+#tu_22{left:307px;top:345px;}
+#tv_22{left:307px;top:364px;}
+#tw_22{left:476px;top:326px;}
+#tx_22{left:645px;top:326px;}
+#ty_22{left:138px;top:385px;}
+#tz_22{left:307px;top:385px;}
+#t10_22{left:307px;top:404px;}
+#t11_22{left:476px;top:385px;}
+#t12_22{left:645px;top:385px;}
+#t13_22{left:138px;top:424px;}
+#t14_22{left:307px;top:424px;}
+#t15_22{left:307px;top:444px;}
+#t16_22{left:307px;top:463px;}
+#t17_22{left:307px;top:483px;}
+#t18_22{left:307px;top:502px;}
+#t19_22{left:476px;top:424px;}
+#t1a_22{left:645px;top:424px;}
+#t1b_22{left:138px;top:522px;}
+#t1c_22{left:307px;top:522px;}
+#t1d_22{left:307px;top:542px;}
+#t1e_22{left:476px;top:522px;}
+#t1f_22{left:645px;top:522px;}
+#t1g_22{left:138px;top:562px;}
+#t1h_22{left:307px;top:562px;}
+#t1i_22{left:307px;top:581px;}
+#t1j_22{left:307px;top:601px;}
+#t1k_22{left:307px;top:620px;}
+#t1l_22{left:476px;top:562px;}
+#t1m_22{left:645px;top:562px;}
+#t1n_22{left:138px;top:640px;}
+#t1o_22{left:138px;top:660px;}
+#t1p_22{left:307px;top:640px;}
+#t1q_22{left:307px;top:660px;}
+#t1r_22{left:476px;top:640px;}
+#t1s_22{left:645px;top:640px;}
+#t1t_22{left:138px;top:680px;}
+#t1u_22{left:307px;top:680px;}
+#t1v_22{left:307px;top:699px;}
+#t1w_22{left:476px;top:680px;}
+#t1x_22{left:645px;top:680px;}
+#t1y_22{left:138px;top:719px;}
+#t1z_22{left:307px;top:719px;}
+#t20_22{left:307px;top:739px;}
+#t21_22{left:476px;top:719px;}
+#t22_22{left:645px;top:719px;}
+#t23_22{left:138px;top:759px;}
+#t24_22{left:307px;top:759px;}
+#t25_22{left:307px;top:778px;}
+#t26_22{left:307px;top:797px;}
+#t27_22{left:476px;top:759px;}
+#t28_22{left:645px;top:759px;}
+
+.s1_22{
+	FONT-SIZE: 73px;
+	FONT-FAMILY: ACLPPK-TimesNewRomanPSMT22;
+	color: rgb(0,0,0);
+}
+
+.s3_22{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: GZBYMC-Times-Italic22;
+	color: rgb(0,0,0);
+}
+
+.s4_22{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: SNLSFN-Times-Roman22;
+	color: rgb(0,0,0);
+}
+
+.s2_22{
+	FONT-SIZE: 66px;
+	FONT-FAMILY: QVYMEI-Times-Bold22;
+	color: rgb(0,0,0);
+}
+
+</style>
+<!-- End inline CSS -->
+
+<!-- Begin embedded font definitions -->
+<style type="text/css" >
+
+@font-face {
+	font-family: ACLPPK-TimesNewRomanPSMT22;
+	src: url("22/fonts/ACLPPK-TimesNewRomanPSMT.eot");
+	src: url("22/fonts/ACLPPK-TimesNewRomanPSMT.eot?#iefix") format("embedded-opentype"),
+		url("22/fonts/ACLPPK-TimesNewRomanPSMT.woff") format("woff");
+}
+
+@font-face {
+	font-family: SNLSFN-Times-Roman22;
+	src: url("22/fonts/SNLSFN-Times-Roman.eot");
+	src: url("22/fonts/SNLSFN-Times-Roman.eot?#iefix") format("embedded-opentype"),
+		url("22/fonts/SNLSFN-Times-Roman.woff") format("woff");
+}
+
+@font-face {
+	font-family: GZBYMC-Times-Italic22;
+	src: url("22/fonts/GZBYMC-Times-Italic.eot");
+	src: url("22/fonts/GZBYMC-Times-Italic.eot?#iefix") format("embedded-opentype"),
+		url("22/fonts/GZBYMC-Times-Italic.woff") format("woff");
+}
+
+@font-face {
+	font-family: QVYMEI-Times-Bold22;
+	src: url("22/fonts/QVYMEI-Times-Bold.eot");
+	src: url("22/fonts/QVYMEI-Times-Bold.eot?#iefix") format("embedded-opentype"),
+		url("22/fonts/QVYMEI-Times-Bold.woff") format("woff");
+}
+
+</style>
+<!-- End embedded font definitions -->
+
+<!-- Begin text definitions (Positioned/styled in CSS) -->
+<div id="t1_22" class="t s1_22">Gupta 22 </div>
+<div id="t2_22" class="t s2_22">VII. Appendix </div>
+<div id="t3_22" class="t s3_22">Appendix A </div>
+<div id="t4_22" class="t s2_22">Part Description </div>
+<div id="t5_22" class="t s2_22">What needed for </div>
+<div id="t6_22" class="t s2_22">Cost </div>
+<div id="t7_22" class="t s2_22">Where you’ll buy it </div>
+<div id="t8_22" class="t s4_22">Electric Motor </div>
+<div id="t9_22" class="t s4_22">To turn the plastic </div>
+<div id="ta_22" class="t s4_22">disc </div>
+<div id="tb_22" class="t s4_22">- </div>
+<div id="tc_22" class="t s4_22">Already in ASR room </div>
+<div id="td_22" class="t s4_22">Plastic disc with </div>
+<div id="te_22" class="t s4_22">circles of holes </div>
+<div id="tf_22" class="t s4_22">To create </div>
+<div id="tg_22" class="t s4_22">compressions and </div>
+<div id="th_22" class="t s4_22">rarefactions </div>
+<div id="ti_22" class="t s4_22">$20 </div>
+<div id="tj_22" class="t s4_22">Tap Plastics </div>
+<div id="tk_22" class="t s4_22">Wood Block with </div>
+<div id="tl_22" class="t s4_22">holes  </div>
+<div id="tm_22" class="t s4_22">To connect plastic </div>
+<div id="tn_22" class="t s4_22">tubing to plastic disc </div>
+<div id="to_22" class="t s4_22">$10 </div>
+<div id="tp_22" class="t s4_22">Orchard Supply </div>
+<div id="tq_22" class="t s4_22">50 m long clear </div>
+<div id="tr_22" class="t s4_22">plastic tubing with 3 </div>
+<div id="ts_22" class="t s4_22">mm diameter </div>
+<div id="tt_22" class="t s4_22">To connect side </div>
+<div id="tu_22" class="t s4_22">nozzles to spinning </div>
+<div id="tv_22" class="t s4_22">disc </div>
+<div id="tw_22" class="t s4_22">$25 </div>
+<div id="tx_22" class="t s4_22">Orchard Supply </div>
+<div id="ty_22" class="t s4_22">8 sprinkler connecters  </div>
+<div id="tz_22" class="t s4_22">To create jet outlets </div>
+<div id="t10_22" class="t s4_22">and pipe for water </div>
+<div id="t11_22" class="t s4_22">$5 </div>
+<div id="t12_22" class="t s4_22">Orchard Supply </div>
+<div id="t13_22" class="t s4_22">Wood Pieces </div>
+<div id="t14_22" class="t s4_22">5 blocks of wood will </div>
+<div id="t15_22" class="t s4_22">be used to hoist the </div>
+<div id="t16_22" class="t s4_22">keyboard up and 1 </div>
+<div id="t17_22" class="t s4_22">board to place all </div>
+<div id="t18_22" class="t s4_22">parts on </div>
+<div id="t19_22" class="t s4_22">$15.50 </div>
+<div id="t1a_22" class="t s4_22">Orchard Supply </div>
+<div id="t1b_22" class="t s4_22">Hose </div>
+<div id="t1c_22" class="t s4_22">A water source for the </div>
+<div id="t1d_22" class="t s4_22">instrument </div>
+<div id="t1e_22" class="t s4_22">- </div>
+<div id="t1f_22" class="t s4_22">Home </div>
+<div id="t1g_22" class="t s4_22">10 L clamps </div>
+<div id="t1h_22" class="t s4_22">To bolt all parts down </div>
+<div id="t1i_22" class="t s4_22">specifically the wood </div>
+<div id="t1j_22" class="t s4_22">block and electric </div>
+<div id="t1k_22" class="t s4_22">motor  </div>
+<div id="t1l_22" class="t s4_22">- </div>
+<div id="t1m_22" class="t s4_22">Already in ASR room </div>
+<div id="t1n_22" class="t s4_22">Plastic PVC Pipe </div>
+<div id="t1o_22" class="t s4_22">connector </div>
+<div id="t1p_22" class="t s4_22">To connect the PVC </div>
+<div id="t1q_22" class="t s4_22">pipe to the hose </div>
+<div id="t1r_22" class="t s4_22">$2.49 </div>
+<div id="t1s_22" class="t s4_22">Orchard Supply </div>
+<div id="t1t_22" class="t s4_22">10 Zip Ties  </div>
+<div id="t1u_22" class="t s4_22">To bolt the PVC pipe </div>
+<div id="t1v_22" class="t s4_22">down </div>
+<div id="t1w_22" class="t s4_22">4 * $5.50 </div>
+<div id="t1x_22" class="t s4_22">Already in ASR room </div>
+<div id="t1y_22" class="t s4_22">Metal Bar </div>
+<div id="t1z_22" class="t s4_22">To bolt the PVC pipe </div>
+<div id="t20_22" class="t s4_22">down </div>
+<div id="t21_22" class="t s4_22">- </div>
+<div id="t22_22" class="t s4_22">Already in ASR room </div>
+<div id="t23_22" class="t s4_22">Plastic PVC Pipe</div>
+<div id="t24_22" class="t s4_22">To connect water and </div>
+<div id="t25_22" class="t s4_22">create enough </div>
+<div id="t26_22" class="t s4_22">pressure within </div>
+<div id="t27_22" class="t s4_22">$15 </div>
+<div id="t28_22" class="t s4_22">Orchard Supply </div>
+
+<!-- End text definitions -->
+
+<!-- Begin page background -->
+<div id="pg22Overlay" style="width:100%; height:100%; position:absolute; z-index:1; background-color:rgba(0,0,0,0); -webkit-user-select: none;"></div>
+<div id="pg22"><object width="935" height="1210" data="22/22.svg" type="image/svg+xml" id="pdf22" style="width:935px; height:1210px; background-color:white; -moz-transform:scale(1); z-index: 0;"></object></div>
+<!-- End page background -->
+
+<!-- Begin page loading JS -->
+<script type="text/javascript">
+var isIE = false;
+var f22 = [['t1_22',271],['t2_22',413],['t3_22',310],['t4_22',475],['t5_22',479],['t7_22',557],['t8_22',393],['t9_22',489],['tc_22',591],['td_22',439],['te_22',406],['tf_22',250],['tg_22',479],['tj_22',325],['tk_22',476],['tl_22',158],['tm_22',491],['tn_22',558],['tp_22',426],['tq_22',419],['tr_22',550],['ts_22',354],['tt_22',425],['tu_22',519],['tx_22',426],['ty_22',608],['tz_22',530],['t10_22',489],['t12_22',426],['t13_22',352],['t14_22',585],['t15_22',517],['t16_22',497],['t17_22',463],['t18_22',214],['t1a_22',426],['t1c_22',599],['t1g_22',331],['t1h_22',592],['t1i_22',573],['t1j_22',476],['t1k_22',176],['t1m_22',591],['t1n_22',461],['t1p_22',545],['t1q_22',422],['t1s_22',426],['t1t_22',325],['t1u_22',575],['t1w_22',250],['t1x_22',591],['t1y_22',269],['t1z_22',575],['t22_22',591],['t23_22',461],['t24_22',579],['t25_22',374],['t26_22',412],['t28_22',426]];
+function load22(){
+	var timeout = 100;
+	if (navigator.userAgent.match(/iPhone|iPad|iPod|Android/i)) timeout = 500;
+	setTimeout(function() {adjustWordSpacing(f22);},timeout);
+}
+</script>
+<!--[if lt IE 9]><script type="text/javascript">
+isIE = true;
+
+var divCount = 81;
+for (var i = 1; i < divCount; i++) {
+	var div = document.getElementById("t" + i.toString(36) + "_22");
+	div.style.top = (div.offsetTop * 4) + "px";
+	div.style.left = (div.offsetLeft * 4) + "px";
+	div.style.zoom = "25%";}
+</script><![endif]-->
+<!-- End page loading JS -->
+
+</div>
+
+</div>
+<div id="brand" style="margin:0 auto; width:94px; padding:5px; clear: both;">
+<a href="http://www.idrsolutions.com" target="_blank">
+<img title="PDF to HTML5 Conversion by IDRsolutions" alt="PDF to HTML5 Conversion by IDRsolutions" style="border:0;" src="icons/logo.png" />
+</a>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+	if (extLoaded) { idrLoad(); } else { intLoaded = true; }
+</script>
+</body>
+</html>
